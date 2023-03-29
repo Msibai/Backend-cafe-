@@ -1,4 +1,4 @@
-import express, { response } from 'express';
+import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
@@ -15,6 +15,7 @@ api.listen(port, () => {
 	mongoose.connect(conn, { dbName: 'java22' });
 });
 
-api.get('/', async (request, response) => {
-	response.send('Hello');
-});
+
+import userRouter from './routes/users-router.js';
+api.use('/users',userRouter)
+
