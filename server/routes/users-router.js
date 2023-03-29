@@ -17,7 +17,6 @@ const userSchema = new Schema({
     email: {type:String, required:true},
     password: {type:String, required:true},
     admin: {type:Boolean, default:false, required:true},
-    customer: {type:Boolean, default:false},
     restaurantWorker: {type:Boolean, default:false}
 
     
@@ -38,7 +37,6 @@ userRouter.post('/', async(request,response) =>{
     user.email = request.body.email
     user.password = Encrypt(request.body.password)
     user.admin = request.body.admin
-    user.customer = request.body.customer
     user.restaurantWorker = request.body.restaurantWorker
     await user.save()
     response.json({"User":"Created"})
