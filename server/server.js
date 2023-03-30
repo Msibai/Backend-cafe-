@@ -4,7 +4,9 @@ import dotenv from 'dotenv';
 import menusRouter from './routes/menus-router.js';
 import userRouter from './routes/users-router.js';
 import session from 'express-session'
-import loginRouter from './routes/login-routes.js';
+import loginRouter from './routes/login-router.js';
+import orderRouter from './routes/orders-router.js';
+import restaurantRouter from './routes/restaurant-router.js';
 
 
 
@@ -37,4 +39,6 @@ api.listen(port, () => {
 api.use('/users',userRouter)
 api.use('/menus',menusRouter)
 api.use('/login', loginRouter)
+api.use('/orders', orderRouter)
+api.use('/restaurant', restaurantRouter)
 
