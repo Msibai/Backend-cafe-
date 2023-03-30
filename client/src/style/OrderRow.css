@@ -1,0 +1,35 @@
+.App {
+  border: 1px solid red;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    
+
+  }
+    
+  table {
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 2px solid forestgreen;
+    width: 800px;
+    height: 200px;
+  }
+    
+  th {
+    border-bottom: 1px solid black;
+  }
+    
+  td {
+    text-align: center;
+  }
+
+  .Handle-orders-button {
+    margin-top: 50px;
+justify-content: center;
+    background-color: rgb(64, 118, 9);
+    
+
+  }
