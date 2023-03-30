@@ -30,6 +30,11 @@ userRouter.get('/', async(request,response) => {
     response.json(users)
 })
 
+userRouter.get('/:id', async(request,response) =>{
+    const user = await mongoose.models.users.findById(request.params.id)
+    response.json(user)
+})
+
 userRouter.post('/', async(request,response) =>{
      const user = new mongoose.models.users()
     user.name = request.body.name
@@ -40,6 +45,16 @@ userRouter.post('/', async(request,response) =>{
     user.restaurantWorker = request.body.restaurantWorker
     await user.save()
     response.json({"User":"Created"})
+})
+
+userRouter.delete('/:id', async(request,response) =>{
+    if(request.session?.user && request.session.user.admin){
+        const user = await mongoose.models.users.findByIdAndDelete(request.params.id)
+        response.json({"User":"Deleted"})
+    } else {
+        response.status(403)
+        response.json({"Error":"Unauthorized"})
+    }
 })
 
 export default userRouter
