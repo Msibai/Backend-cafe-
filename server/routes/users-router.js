@@ -1,12 +1,10 @@
 import { Router } from "express";
 import mongoose,{Schema} from 'mongoose';
-import crypto from "crypto"
-const salt = "pass".toString('hex')
 
-function Encrypt(password){
-    let hash = crypto.pbkdf2Sync(password, salt,1000,64,'sha512').toString('hex')
-    return hash
-}
+import Encrypt from '../utils/get-hash.js'
+
+
+
 
 
 const userRouter = Router();
@@ -56,6 +54,27 @@ userRouter.delete('/:id', async(request,response) =>{
         response.json({"Error":"Unauthorized"})
     }
 })
+
+
+userRouter.patch('/:id', async(request,response)=>{
+    console.log(request.session?.user.admin)
+    if(request.session?.user){
+        const user = await mongoose.models.users.findById(request.params.id)
+        user.name = request.body.name ?? user.name
+        user.phoneNumber = request.body.phoneNumber ?? user.phoneNumber
+        user.email = request.body.email ?? user.email
+        user.password = Encrypt(request.body.password) ?? user.password
+        await user.save()}
+
+        else{
+            response.status(403)
+            response.json({"Error":"Unauthorized"})
+            return
+        }
+         response.json({"User":"Updated"})
+})
+
+
 
 export default userRouter
 

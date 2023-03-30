@@ -41,7 +41,7 @@ menusRouter.delete('/:id', async(request,response)=>{
 })
 
 menusRouter.patch('/:id', async(request,response)=>{
-    if(response.session?.user.admin){
+    if(request.session?.user.admin){
     const menu = await mongoose.models.menus.findByIdAndUpdate(request.params.id)
     menu.itemName = request.body.itemName ?? menu.itemName
     menu.description = request.body.description ?? menu.description
