@@ -6,6 +6,7 @@ import mongoose, { Schema } from 'mongoose';
 const orderRouter = Router();
 
 const orderSchema = new Schema({
+    orderNumber: { type: String, required: true},
     items: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'menus'
@@ -21,6 +22,8 @@ const orderSchema = new Schema({
     }
 
 })
+
+
 
 mongoose.model('orders', orderSchema)
 
@@ -47,6 +50,17 @@ orderRouter.post('/', async (req, res) => {
 
     }
   });
+
+  orderRouter.patch('/:id', async(request,response)=>{
+    const order = await mongoose.models.orders.findByIdAndUpdate(request.params.id)
+    order.orderNumber = request.body.orderNumber ?? order.orderNumber
+    order.items = request.body.items ?? order.items
+    order.restaurant = request.body.restaurant ?? order.restaurant
+    order.customer = request.body.customer ?? order.customer
+
+    await order.save()
+    response.json({"order" : "Updated"})
+})
 
 
 export default orderRouter

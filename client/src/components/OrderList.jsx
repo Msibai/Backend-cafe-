@@ -8,12 +8,12 @@ import React from 'react';
         <thead>
           <tr>
             <th> Select </th>
-            <th>Order_Id</th>
+            <th>Order_Number</th>
             <th>Status</th>
           </tr>
           </thead>
           <tbody>
-          {orders.map(order => <Order key={order.id} order = {order}/>)}
+          {orders.map(order => <Order key={order.orderNumber} order = {order}/>)}
           </tbody>
         </table>
 
@@ -30,11 +30,12 @@ import React from 'react';
   export default OrderRow;
 
 
-  function Order({order:{id, items}}){
+  function Order({order:{orderNumber, items}}){
     return(
-        <tr key={id}>
-            <td>{id}</td>
-            <td>{items}</td>
+        <tr key={orderNumber}>
+            <td>{<input type="radio" value="Selection" name="order" />}</td>
+            <td>{orderNumber}</td>
+            <td> Received </td>
 
 
         </tr>

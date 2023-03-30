@@ -16,6 +16,15 @@ dotenv.config();
 
 api.use(express.json());
 
+import cors from 'cors'
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
+api.use(cors(corsOptions)) // Use this after the variable declaration
+
 api.use(session({
     secret: 'hello jack',
     resave: false,

@@ -8,7 +8,7 @@ function App() {
 	// first data grab
 	useEffect(() => {
 		fetch("http://localhost:3030/orders")
-		.then(resp => resp.json())
+		.then(res => res.json())
 		.then(data => setOrders(data)) // set data to state
 	}, []);
 
