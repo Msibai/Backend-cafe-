@@ -1,12 +1,10 @@
 import { Router } from "express";
 import mongoose,{Schema} from 'mongoose';
-import crypto from "crypto"
-const salt = "pass".toString('hex')
 
-function Encrypt(password){
-    let hash = crypto.pbkdf2Sync(password, salt,1000,64,'sha512').toString('hex')
-    return hash
-}
+import Encrypt from '../utils/get-hash.js'
+
+
+
 
 
 const userRouter = Router();
@@ -17,7 +15,6 @@ const userSchema = new Schema({
     email: {type:String, required:true},
     password: {type:String, required:true},
     admin: {type:Boolean, default:false, required:true},
-    customer: {type:Boolean, default:false},
     restaurantWorker: {type:Boolean, default:false}
 
     
@@ -31,6 +28,11 @@ userRouter.get('/', async(request,response) => {
     response.json(users)
 })
 
+userRouter.get('/:id', async(request,response) =>{
+    const user = await mongoose.models.users.findById(request.params.id)
+    response.json(user)
+})
+
 userRouter.post('/', async(request,response) =>{
      const user = new mongoose.models.users()
     user.name = request.body.name
@@ -38,11 +40,41 @@ userRouter.post('/', async(request,response) =>{
     user.email = request.body.email
     user.password = Encrypt(request.body.password)
     user.admin = request.body.admin
-    user.customer = request.body.customer
     user.restaurantWorker = request.body.restaurantWorker
     await user.save()
     response.json({"User":"Created"})
 })
+
+userRouter.delete('/:id', async(request,response) =>{
+    if(request.session?.user && request.session.user.admin){
+        const user = await mongoose.models.users.findByIdAndDelete(request.params.id)
+        response.json({"User":"Deleted"})
+    } else {
+        response.status(403)
+        response.json({"Error":"Unauthorized"})
+    }
+})
+
+
+userRouter.patch('/:id', async(request,response)=>{
+    console.log(request.session?.user.admin)
+    if(request.session?.user){
+        const user = await mongoose.models.users.findById(request.params.id)
+        user.name = request.body.name ?? user.name
+        user.phoneNumber = request.body.phoneNumber ?? user.phoneNumber
+        user.email = request.body.email ?? user.email
+        user.password = Encrypt(request.body.password) ?? user.password
+        await user.save()}
+
+        else{
+            response.status(403)
+            response.json({"Error":"Unauthorized"})
+            return
+        }
+         response.json({"User":"Updated"})
+})
+
+
 
 export default userRouter
 
