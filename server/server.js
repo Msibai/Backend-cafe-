@@ -1,18 +1,11 @@
-import express from 'express';
+import express, { Router } from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import menusRouter from './routes/menus-router.js';
-import userRouter from './routes/users-router.js';
-import session from 'express-session'
-import loginRouter from './routes/login-routes.js';
-import { Router} from 'express';
-import logIn from './routes/login-routes2.js';
+import loginRouter from './routes/login-router.js';
+import usersRouter from './routes/users-router.js'
 
+import session from 'express-session';
 
-const router = Router()
-
-router.use('/', logIn)
-app.use(router)
 
 
 const api = express();
@@ -21,17 +14,18 @@ dotenv.config();
 
 api.use(express.json());
 
-api.use(session({
-    secret: 'hello jack',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        secure: false,
-        httpOnly: true,
-        maxAge: 365*24*60*60*1000
-    }
-}))
-
+api.use(
+	session({
+		secret: 'hello jack',
+		resave: false,
+		saveUninitialized: true,
+		cookie: {
+			secure: false,
+			httpOnly: true,
+			maxAge: 365 * 24 * 60 * 60 * 1000,
+		},
+	})
+);
 
 
 
@@ -42,8 +36,7 @@ api.listen(port, () => {
 	mongoose.connect(conn, { dbName: 'java22' });
 });
 
-
-api.use('/users',userRouter)
-api.use('/menus',menusRouter)
-api.use('/login', loginRouter)
-
+const router = Router();
+router.use('/api/login', loginRouter);
+router.use('/api/users',usersRouter)
+api.use(router);
