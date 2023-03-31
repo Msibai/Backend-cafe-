@@ -5,7 +5,14 @@ import menusRouter from './routes/menus-router.js';
 import userRouter from './routes/users-router.js';
 import session from 'express-session'
 import loginRouter from './routes/login-routes.js';
+import { Router} from 'express';
+import logIn from './routes/login-routes2.js';
 
+
+const router = Router()
+
+router.use('/', logIn)
+app.use(router)
 
 
 const api = express();
@@ -24,6 +31,8 @@ api.use(session({
         maxAge: 365*24*60*60*1000
     }
 }))
+
+
 
 
 const conn = `mongodb+srv://mukhtarsibai:${process.env.dbPass}@cluster0.n8wdklc.mongodb.net/?retryWrites=true&w=majority`;
