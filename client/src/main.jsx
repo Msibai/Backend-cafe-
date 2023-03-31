@@ -6,17 +6,18 @@ import {
 	Route,
 	RouterProvider,
 } from 'react-router-dom';
-import AdminDashboard from './AdminDashboard';
 import App from './App';
-import Home from './Home';
-import Menu from './Menu';
-import MenuItem from './MenuItem';
-import Oreder from './Order';
-import OredersStatus from './OrdersStatus';
-import ShoppingCart from './ShoppingCart';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+
 import './index.css';
+import AdminDashboard from './pages/AdminDashboard';
+import Home from './pages/Home';
+import Menu from './pages/Menu';
+import MenuItem from './pages/MenuItem';
+import Oreder from './pages/Order';
+import OredersStatus from './pages/OrdersStatus';
+import ShoppingCart from './pages/ShoppingCart';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 const router = createBrowserRouter(
 	createRoutesFromElements([
