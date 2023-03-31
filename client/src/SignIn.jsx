@@ -1,3 +1,6 @@
+
+/*
+
 import "./sign-in.css"
 import  background from"./images/coffeee.jpg"
 import { useState,useEffect,useRef } from "react";
@@ -13,7 +16,7 @@ const SignIn = () => {
 
   const submitLogin = async (email, password) => {
     
-    const response = await fetch("/login", {
+    const response = await fetch("/api/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -52,3 +55,4 @@ return(
 
 export default SignIn;
 
+*/
