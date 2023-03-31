@@ -1,8 +1,12 @@
 import express, { Router } from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import session from 'express-session';
 import loginRouter from './routes/login-router.js';
+import usersRouter from './routes/users-router.js'
+
+import session from 'express-session';
+
+
 
 const api = express();
 const port = 3030;
@@ -23,6 +27,8 @@ api.use(
 	})
 );
 
+
+
 const conn = `mongodb+srv://mukhtarsibai:${process.env.dbPass}@cluster0.n8wdklc.mongodb.net/?retryWrites=true&w=majority`;
 
 api.listen(port, () => {
@@ -32,5 +38,5 @@ api.listen(port, () => {
 
 const router = Router();
 router.use('/api/login', loginRouter);
-
+router.use('/api/users',usersRouter)
 api.use(router);
