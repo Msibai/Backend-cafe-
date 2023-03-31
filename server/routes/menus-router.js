@@ -16,7 +16,7 @@ menusRouter.get ('/', async(request,response)=>{
 })
 
 menusRouter.post('/', async(request,response) => {
-    if(request.session.user.admin){
+    if(request.session?.user && request.session.user.admin){
     const menu = new mongoose.models.menus()
     menu.itemName = request.body.itemName
     menu.description = request.body.description
