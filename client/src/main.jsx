@@ -18,6 +18,8 @@ import OredersStatus from './pages/OrdersStatus';
 import ShoppingCart from './pages/ShoppingCart';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import AddMenu from './pages/AddMenu';
+import UpdateMenu from './pages/UpdateMenu';
 
 const router = createBrowserRouter(
 	createRoutesFromElements([
@@ -33,6 +35,9 @@ const router = createBrowserRouter(
 			</Route>
 			<Route path='cart' element={<ShoppingCart />} />
 			<Route path='dashboard' element={<AdminDashboard />} />
+			<Route path='addMenu' element={<AddMenu />} />
+			<Route path='updateMenu' element={<UpdateMenu />} />
+			
 		</Route>,
 	])
 );

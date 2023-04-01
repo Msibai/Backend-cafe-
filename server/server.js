@@ -39,4 +39,7 @@ api.listen(port, () => {
 const router = Router();
 router.use('/api/login', loginRouter);
 router.use('/api/users',usersRouter)
+router.use('/api/dashboard',usersRouter)
+router.use('/api/addMenu',usersRouter)
+router.use('/api/updateMenu',usersRouter)
 api.use(router);
