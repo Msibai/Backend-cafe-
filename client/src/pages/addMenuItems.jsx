@@ -1,5 +1,6 @@
 import React from 'react'
 import {  useRef} from 'react';
+import './css/addMenu.css';
 
 function AddMenuItems() {
     const nameRef = useRef();
@@ -19,7 +20,8 @@ function AddMenuItems() {
     };
 
 	return (
-        <>
+        <div className='page'>
+        <h1 className= "add-menu-item-title"> Add a menu item </h1>
             <form  className="form-container" 
             onSubmit={(event) => {
                 event.preventDefault();
@@ -30,15 +32,16 @@ function AddMenuItems() {
               <input ref={nameRef} type="text" id="name" />
                </div>
              <div className="form-group">
+             <label htmlFor="name">Description:</label>
              <input ref={descpRef} type="text" id="name" />
                </div> 
               <div className="form-group">
                <label htmlFor="price">Price:</label>
                <input ref={priceRef} type="text" id="name" />
                 </div>
-                 <button type="submit" className="submit-edit-button">Submit</button> 
+                 <button type="submit" className="submit-add-button">Submit</button> 
                  </form>
-        </>
+        </div>
     );
 }
 export default AddMenuItems;
