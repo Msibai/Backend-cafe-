@@ -10,25 +10,31 @@ const menuSchema = new Schema ({
 
 mongoose.model('menus', menuSchema )
 
-menusRouter.get ('/', async(request,response)=>{
+menusRouter.get ('/', async(request,response)=> {
+    try{
     const menus = await mongoose.models.menus.find()
-    response.json(menus)
-})
+    response.json(menus);
+} catch (error){
+    response.status(500).json({message: error.message });
+}
+});
 
 menusRouter.post('/', async(request,response) => {
-    if(request.session?.user && request.session.user.admin){
-    const menu = new mongoose.models.menus()
-    menu.itemName = request.body.itemName
-    menu.description = request.body.description
-    menu.pricePerItem = request.body.pricePerItem
-    await menu.save()
-    response.json({"menu": "created"})
-    return}
-    else {
-        response.status(403)
-        response.json({"error" : "unauthorized"})
-    }
-})
+     if(request.session?.user && request.session.user.admin){ 
+        try { const menu = new mongoose.models.menus()
+             menu.itemName = request.body.itemName
+             menu.description = request.body.description
+             menu.pricePerItem = request.body.pricePerItem
+             await menu.save() 
+             response.json({message: "Menu item successfully added"}) } 
+             catch(error) { 
+                response.status(403)
+                response.send({message : error})
+             }}
+            else{
+                response.status(403)
+                response.json({error : "Only admin can add a menu item"})
+            } })
 
 menusRouter.delete('/:id', async(request,response)=>{
     if(response.session?.user.admin){
