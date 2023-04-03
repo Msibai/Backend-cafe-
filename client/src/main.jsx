@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
+	BrowserRouter,
 	createBrowserRouter,
 	createRoutesFromElements,
 	Route,
@@ -18,6 +19,8 @@ import OredersStatus from './pages/OrdersStatus';
 import ShoppingCart from './pages/ShoppingCart';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import AddMenu from './pages/AddMenu';
+import UpdateMenu from './pages/UpdateMenu';
 
 const router = createBrowserRouter(
 	createRoutesFromElements([
@@ -33,12 +36,15 @@ const router = createBrowserRouter(
 			</Route>
 			<Route path='cart' element={<ShoppingCart />} />
 			<Route path='dashboard' element={<AdminDashboard />} />
+			<Route path='addMenu' element={<AddMenu />} />
+			<Route path='updateMenu' element={<UpdateMenu />} />
+			
 		</Route>,
 	])
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+	<RouterProvider router={router} />	
 	</React.StrictMode>
 );
