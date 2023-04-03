@@ -18,7 +18,7 @@ import OredersStatus from './pages/OrdersStatus';
 import ShoppingCart from './pages/ShoppingCart';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import AddMenuItems from './pages/addMenuItems';
+import AddMenuItems from './pages/addMenu';
 
 const router = createBrowserRouter(
 	createRoutesFromElements([

@@ -45,15 +45,15 @@ function AddMenuItems() {
             } }> 
             <div className="form-group">
              <label htmlFor="name">Name:</label>
-              <input ref={nameRef} type="text" id="name" />
+              <input ref={nameRef} type="text" id="name" required/>
                </div>
              <div className="form-group">
-             <label htmlFor="name">Description:</label>
-             <input ref={descpRef} type="text" id="name" />
+             <label htmlFor="name">Description: </label>
+             <input ref={descpRef} type="text" id="name" required/>
                </div> 
               <div className="form-group">
                <label htmlFor="price">Price:</label>
-               <input ref={priceRef} type="text" id="name" />
+               <input ref={priceRef} type="text" id="name" required />
                 </div>
                  <button type="submit" className="submit-add-button" >Submit</button> 
                  </form>
