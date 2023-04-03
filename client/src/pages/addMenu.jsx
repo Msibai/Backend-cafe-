@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useRef} from 'react';
 import './css/addMenu.css';
 
-function AddMenuItems() {
+function AddMenu() {
     const nameRef = useRef();
     const descpRef = useRef();
     const priceRef = useRef();
@@ -45,15 +45,15 @@ function AddMenuItems() {
             } }> 
             <div className="form-group">
              <label htmlFor="name">Name:</label>
-              <input ref={nameRef} type="text" id="name" required/>
+              <input ref={nameRef} type="text" id="name" required />
                </div>
              <div className="form-group">
-             <label htmlFor="name">Description: </label>
-             <input ref={descpRef} type="text" id="name" required/>
+             <label htmlFor="name">Description:</label>
+             <input ref={descpRef} type="text" id="name" required />
                </div> 
               <div className="form-group">
                <label htmlFor="price">Price:</label>
-               <input ref={priceRef} type="text" id="name" required />
+               <input ref={priceRef} type="text" id="name" required/>
                 </div>
                  <button type="submit" className="submit-add-button" >Submit</button> 
                  </form>
@@ -62,5 +62,4 @@ function AddMenuItems() {
         </div>
     );
 }
-export default AddMenuItems;
-
+export default AddMenu;

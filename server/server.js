@@ -3,9 +3,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import loginRouter from './routes/login-router.js';
 import usersRouter from './routes/users-router.js'
-
-import session from 'express-session';
 import menusRouter from './routes/menus-router.js';
+import session from 'express-session';
 import orderRouter from './routes/orders-router.js';
 import restaurantRouter from './routes/restaurant-router.js';
 
@@ -45,5 +44,4 @@ router.use('/api/login', loginRouter);
 router.use('/api/users',usersRouter);
 router.use('/api/menus', menusRouter);
 router.use('/api/orders', orderRouter);
-
 api.use(router);

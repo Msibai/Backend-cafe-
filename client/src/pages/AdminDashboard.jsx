@@ -1,18 +1,20 @@
-import { Outlet } from "react-router-dom";
-function AdminDashboard() {
-	return (
-		<>
-			<div>
-				<button className="add-menu-button"> Add item </button> 
 
-				<button className="update-menu-button"> Update item </button>
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-				<Outlet> </Outlet>
+const AdminDashboard = () => {
+  return (
+    <div>
+      <h1>Admin Dashboard</h1>
+      <div className="button-container">
+        <Link to="/addMenu">Add Menu</Link>
+        <Link to="/updateMenu">Update Menu</Link>
+      </div>
+    </div>
+  );
+};
 
-
-			</div>
-		</>
-	);
-}
 
 export default AdminDashboard;
+
+
