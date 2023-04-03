@@ -19,6 +19,13 @@ menusRouter.get ('/', async(request,response)=> {
 }
 });
 
+
+menusRouter.get ('/:_id', async(request,response)=> {
+    const menu = await mongoose.models.menus.findById(request.params._id);
+    response.json(menu);
+    })
+
+
 menusRouter.post('/', async(request,response) => {
      if(request.session?.user && request.session.user.admin){ 
         try { const menu = new mongoose.models.menus()

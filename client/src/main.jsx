@@ -35,8 +35,9 @@ const router = createBrowserRouter(
 			</Route>
 			<Route path='cart' element={<ShoppingCart />} />
 			<Route path='dashboard' element={<AdminDashboard />} />
-			<Route path='addMenu' element={<AddMenu />} />
-			<Route path='updateMenu' element={<UpdateMenu />} />	
+			<Route path='addmenu' element={<AddMenu />} />
+			<Route path='updatemenu' element={<EditMenu />}>
+			</Route>
 		</Route>,
 	])
 );
