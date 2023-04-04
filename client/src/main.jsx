@@ -15,11 +15,10 @@ import Menu from './pages/Menu';
 import MenuItem from './pages/MenuItem';
 import Oreder from './pages/Order';
 import OredersStatus from './pages/OrdersStatus';
-import ShoppingCart from './pages/ShoppingCart';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp'; 
-import UpdateMenu from './pages/UpdateMenu';
 import AddMenu from './pages/addMenu';
+import UpdateMenu from './pages/UpdateMenu';
 import UpdateMenuItem from './pages/UpdateMenuItem';
 
 const router = createBrowserRouter(
@@ -34,7 +33,6 @@ const router = createBrowserRouter(
 			<Route path='orders' element={<OredersStatus />}>
 				<Route path=':orderid' element={<Oreder />} />
 			</Route>
-			<Route path='cart' element={<ShoppingCart />} />
 			<Route path='dashboard' element={<AdminDashboard />} />
 			<Route path='/dashboard/addmenu' element={<AddMenu />} />
 			<Route path ='/dashboard/updatemenu' element={<UpdateMenu />} />
