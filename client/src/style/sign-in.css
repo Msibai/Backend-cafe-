@@ -38,13 +38,15 @@
 
 h1 {
 	margin-bottom: 1em;
-	font-family: 'Delicious Handrawn', cursive;
 	color: white;
 	letter-spacing: 1px;
 	text-shadow: -1px 0 black, 0 2px black, 1px 0 black, 0 -1px black;
 	font-size: 2.5rem;
 }
 
+.sign-in-title{
+	font-family: 'Delicious Handrawn', cursive;
+}
 .login-form {
 	display: flex;
 	flex-direction: column;

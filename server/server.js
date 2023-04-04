@@ -26,7 +26,7 @@ api.use(
 	})
 );
 
-const conn = `mongodb+srv://mukhtarsibai:${process.env.dbPass}@cluster0.n8wdklc.mongodb.net/?retryWrites=true&w=majority`;
+const conn = `mongodb+srv://mukhtarsibai:hNntlwXGrEf6qUnM@cluster0.n8wdklc.mongodb.net/?retryWrites=true&w=majority`;
 
 api.listen(port, () => {
 	console.log(`http://localhost:${port}`);
