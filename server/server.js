@@ -5,7 +5,9 @@ import loginRouter from './routes/login-router.js';
 import usersRouter from './routes/users-router.js';
 import menusRouter from './routes/menus-router.js';
 import session from 'express-session';
+import restaurantRouter from './routes/restaurant-router.js';
 import errorController from './controller/errorController.js';
+
 
 const api = express();
 const port = 3030;
@@ -34,8 +36,10 @@ api.listen(port, () => {
 });
 
 const router = Router();
+router.use('/api/', restaurantRouter );
 router.use('/api/login', loginRouter);
-router.use('/api/users', usersRouter);
+router.use('/api/users',usersRouter);
 router.use('/api/menus', menusRouter);
+
 api.use(router);
 api.use(errorController);

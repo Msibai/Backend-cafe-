@@ -21,17 +21,17 @@ menusRouter.get("/:id", async (request, response) => {
 });
 
 menusRouter.post("/", async (request, response) => {
-  if (request.session.user.admin) {
+  if (request.session.user && request.session.user.admin) {
     const menu = new mongoose.models.menus();
     menu.itemName = request.body.itemName;
     menu.description = request.body.description;
     menu.pricePerItem = request.body.pricePerItem;
     await menu.save();
-    response.json({ menu: "created" });
+    response.json({ message: "Menu item successfully added" });
     return;
   } else {
     response.status(403);
-    response.json({ error: "unauthorized" });
+    response.json({ error: "Only admin can add new menu item" });
   }
 });
 
@@ -71,3 +71,4 @@ menusRouter.put('/:id', async(request,response) =>{
 })
 
 export default menusRouter;
+

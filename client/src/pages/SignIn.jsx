@@ -3,14 +3,9 @@ import background from "../images/coffeee.jpg"
 import {useRef } from "react";
 
 
-
-
-
 const SignIn = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
- 
-
 
   const submitLogin = async (email, password) => {
 
@@ -20,12 +15,11 @@ const SignIn = () => {
       body: JSON.stringify({ email, password }),
     });
     const result = await response.json();
-    console.log(result);
+  
 
-    console.log(email, password)
+    console.log(result)
     
   }
-
 
 
   return (

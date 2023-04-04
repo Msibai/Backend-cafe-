@@ -33,7 +33,6 @@ orderRouter.get('/', async (req, res) => {
 
 orderRouter.post('/', async (req, res) => {
     try {
-     
       const order = new mongoose.models.orders(req.body);
       order.items = req.body.items
       order.restaurant = req.body.restaurant

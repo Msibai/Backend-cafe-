@@ -1,4 +1,4 @@
-function Oreder() {
+function Order() {
 	return <h1>Order</h1>;
 }
-export default Oreder;
+export default Order;
