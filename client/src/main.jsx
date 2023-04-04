@@ -12,13 +12,15 @@ import './index.css';
 import AdminDashboard from './pages/AdminDashboard';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
-import EditMenuItem from './pages/EditMenuItem';
+import EditMenuItem from './pages/UpdateMenuItem';
 import Oreder from './pages/Order';
 import OredersStatus from './pages/OrdersStatus';
 import ShoppingCart from './pages/ShoppingCart';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import EditMenu from './pages/EditMenu';
+import EditMenu from './pages/UpdateMenu';
+import UpdateMenu from './pages/UpdateMenu';
+import UpdateMenuItem from './pages/UpdateMenuItem';
 
 
 const router = createBrowserRouter(
@@ -34,8 +36,8 @@ const router = createBrowserRouter(
 			</Route>
 			<Route path='cart' element={<ShoppingCart />} />
 			<Route path='dashboard' element={<AdminDashboard />} />
-				<Route path ='/dashboard/editmenu' element={<EditMenu />} />
-				<Route path='/dashboard/editmenu/:id' element={<EditMenuItem />} />
+				<Route path ='/dashboard/updatemenu' element={<UpdateMenu />} />
+				<Route path='/dashboard/update-menu-item/:id' element={<UpdateMenuItem />} />
 		</Route>,
 	])
 );

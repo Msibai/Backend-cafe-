@@ -2,7 +2,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./css/edit-menu.css";
 
-function EditMenuItem() {
+function UpdateMenuItem() {
   const [menuItem, setMenuItem] = useState();
   const [itemName, setItemTitle] = useState();
   const [itemDescription, setItemDescription] = useState();
@@ -16,24 +16,26 @@ function EditMenuItem() {
     const fetchItem = async () => {
       const response = await fetch(`/api/menus/${params.id}`);
       setMenuItem(await response.json())
-    
       console.log(menuItem);
-     
-      
-    };
+     };
 
     fetchItem();
   }, [params.id]);
+
+  
   console.log(menuItem)
+
+
   const submitChanges = async (event) => {
     event.preventDefault()
     const changes = await fetch(`/api/menus/${params.id}`, {
       method: "put",
       headers: new Headers({ "Content-Type": "application/json" }),
-      body: JSON.stringify(menuItem),
+      body: JSON.stringify(menuItem)
       
     });
     console.log(changes);
+    
   };
   return (
     <div className="page">
@@ -43,21 +45,17 @@ function EditMenuItem() {
         <div className="form-group"> 
           <label htmlFor="name">Name</label>
           <input type="text" id="name" placeholder={menuItem?.itemName} value ={itemName}
-          onChange={e => setItemTitle(e.target.value)} />
+          onChange={e => setMenuItem({...menuItem, itemName:e.target.value})} />
         </div>
         <div className="form-group">
           <label htmlFor="description">Description:</label>
           <textarea id="description" placeholder={menuItem?.description} value={itemDescription} 
-          onChange={e => setItemDescription(e.target.value)}/>
+          onChange={e => setMenuItem({...menuItem, description:e.target.value})}/>
         </div>
         <div className="form-group">
           <label htmlFor="price">Price:</label>
-          <input
-            type="number"
-            id="price"
-            placeholder={menuItem?.pricePerItem} value ={itemPricePerItem}
-            onChange={e => setItemPrice(e.target.value)}
-          />
+          <input type="number"id="price" placeholder={menuItem?.pricePerItem} value ={itemPricePerItem} 
+          onChange={e => setMenuItem({...menuItem, pricePerItem: e.target.value})}/>
         </div>
 
         <button
@@ -72,7 +70,7 @@ function EditMenuItem() {
   );
 }
 
-export default EditMenuItem;
+export default UpdateMenuItem;
 
 /*
 		

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./css/edit-menu.css";
 import { Link } from "react-router-dom";
 
-function EditMenu() {
+function UpdateMenu() {
   const [menus, setMenus] = useState([]);
 
   useEffect(() => {
@@ -25,11 +25,12 @@ function EditMenu() {
             <p className="menu-item-description">{menu.description}</p>
             <p className="menu-item-price">{menu.pricePerItem} kr</p>
             <Link
-              to={`/dashboard/editmenu/${menu._id}`}
+              to={`/dashboard/update-menu-item/${menu._id}`}
               state={{ data: menu._id }}
             >
               <button className="menu-item-button"> Update</button>
             </Link>
+            <button className="delete-menu-button">Delete</button>
           </div>
         ))}
       </div>
@@ -37,4 +38,4 @@ function EditMenu() {
   );
 }
 
-export default EditMenu;
+export default UpdateMenu;

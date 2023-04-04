@@ -5,7 +5,9 @@ html{
   background-color:burlywood;
 }
 
-
+.delete-menu-button{
+  margin:0.5rem;
+}
 
 #menuid{
     width:50%;
