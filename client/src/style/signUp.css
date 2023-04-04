@@ -1,0 +1,47 @@
+.signup-form {
+	margin: 60px auto;
+	max-width: 525px;
+	padding: 30px;
+	background-color: burlywood;
+	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
+		0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.signup-form .group {
+	margin-bottom: 15px;
+}
+
+.signup-form .group label,
+.signup-form .group input {
+	width: 100%;
+	display: block;
+}
+
+.signup-form .group input {
+	width: 100%;
+	border: none;
+	padding: 15px 20px;
+	border-radius: 25px;
+	background: rgba(255, 255, 255, 0.4);
+}
+
+.signup-form .group label {
+	color: black;
+	font-size: 12px;
+}
+
+.signup-form button {
+	display: block;
+	margin: auto;
+	background: rgb(136, 77, 0);
+	cursor: pointer;
+}
+
+.error-message {
+	color: rgb(223, 32, 32);
+	font-weight: 500;
+}
+
+.success-message {
+	color: rgb(97, 158, 11);
+}
