@@ -16,15 +16,22 @@ loginRouter.post('/', async (request, response) => {
 		email: request.body.email,
 		password: Encrypt(request.body.password),
 	});
+	response.status(201);
+	 request.session.user = user;
+	 response.json(user);
 
-	if (user) {
-		response.status(201);
-		request.session.user = user;
-		response.json({ loggedIn: true });
-	} else {
-		response.status(401);
-		response.json({ loggedIn: false });
-	}
+	// if (user.admin || user.restaurantWorker) {
+	// 	response.status(201);
+	// 	request.session.user = user;
+	// 	response.json({ staffloggedIn: true });
+	// } else if( !user.admin && !user.restaurantWorker) {
+	// 	response.status(201);
+	// 	response.json({ customerloggedIn: true });
+	// }
+	// else {
+	// 	response.status(401);
+	// 	response.json({loggedIn: false});
+	// }
 });
 
 loginRouter.get('/', async (request, response) => {
