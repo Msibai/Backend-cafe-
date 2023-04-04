@@ -18,6 +18,7 @@ import OredersStatus from './pages/OrdersStatus';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp'; 
 import AddMenu from './pages/addMenu';
+import UpdateMenu from './pages/UpdateMenu';
 import UpdateMenuItem from './pages/UpdateMenuItem';
 
 const router = createBrowserRouter(
