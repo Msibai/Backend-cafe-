@@ -19,6 +19,7 @@ function AddMenu() {
             body: JSON.stringify({itemName,description,pricePerItem}),
         });
         const result = await response.json()
+        console.log(result);
 
         if( result.error ){
             setErr(result.error)
