@@ -1,12 +1,13 @@
 import "../style/sign-in.css";
 import background from "../images/coffeee.jpg";
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SignIn = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
   const submitLogin = async (email, password) => {
     const response = await fetch("/api/login", {
@@ -25,6 +26,7 @@ const SignIn = () => {
       style={{ backgroundImage: `url(${background})` }}
     >
       <div className="sign-in-container">
+        <h1>Back End Café</h1>
         <h1 className="sign-in-title">Back End Café</h1>
         <form
           onSubmit={(event) => {
@@ -51,7 +53,7 @@ const SignIn = () => {
           />
           <button type="submit">Log in</button>
         </form>
-        <Link to="/signup">
+        <Link to={"/signup"}>
           <button className="create-account-button">Create account </button>
         </Link>
       </div>

@@ -7,7 +7,9 @@ function UpdateMenuItem() {
   const [itemName, setItemTitle] = useState();
   const [itemDescription, setItemDescription] = useState();
   const [itemPricePerItem, setItemPrice] = useState();
-  const [err, setErr] = useState();
+
+  const [err, setErr] = useState("");
+
   const params = useParams();
 
   useEffect(() => {
@@ -44,13 +46,14 @@ function UpdateMenuItem() {
       console.log(result);
     }
   };
+
   return (
     <div className="page">
       <h1 className="edit-menu-item-title">Update menu item</h1>
       {err != "" ? (
         <div className="error">
           {" "}
-          <h2>{err}</h2>
+          <h2 className="update-menu-item-error">{err}</h2>
         </div>
       ) : (
         ""
