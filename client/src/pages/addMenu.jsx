@@ -38,7 +38,7 @@ function AddMenu() {
       {err != "" ? (
         <div className="error">
           {" "}
-          <h2>{err}</h2>
+          <h2 className="update-menu-item-error">{err}</h2>
         </div>
       ) : (
         ""

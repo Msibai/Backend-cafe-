@@ -26,7 +26,6 @@ const SignIn = () => {
       style={{ backgroundImage: `url(${background})` }}
     >
       <div className="sign-in-container">
-        <h1>Back End Café</h1>
         <h1 className="sign-in-title">Back End Café</h1>
         <form
           onSubmit={(event) => {

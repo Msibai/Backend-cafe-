@@ -9,3 +9,15 @@
     color: white;
     font-size: 18px;
 }
+
+.admin-dash-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    border:2px solid black;
+    border-radius:10px;
+    
+    background-color: white;
+  
+    }
