@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../style/edit-menu.css"
+import "../style/edit-menu.css";
 import { Link } from "react-router-dom";
 
 function UpdateMenu() {
@@ -39,4 +39,3 @@ function UpdateMenu() {
 }
 
 export default UpdateMenu;
-

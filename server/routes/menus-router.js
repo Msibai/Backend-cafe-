@@ -62,13 +62,19 @@ menusRouter.patch("/:id", async (request, response) => {
   response.json({ Menu: "Updated" });
 });
 
-menusRouter.put('/:id', async(request,response) =>{
-  const menu = await
-  mongoose.models.menus.findByIdAndUpdate(request.params.id,request.body)
-  await menu.save()
-  
-  response.json({ Menu: "Updated" });
-})
+menusRouter.put("/:id", async (request, response) => {
+  if (request.session.user && request.session.user.admin) {
+    const menu = await mongoose.models.menus.findByIdAndUpdate(
+      request.params.id,
+      request.body
+    );
+    await menu.save();
+    response.json({ message: "Menu item successfully updated!" });
+    return;
+  } else {
+    response.status(403);
+    response.json({ error: "You must be an admin to update a menu item" });
+  }
+});
 
 export default menusRouter;
-
