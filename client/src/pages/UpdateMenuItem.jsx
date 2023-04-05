@@ -7,6 +7,7 @@ function UpdateMenuItem() {
   const [itemName, setItemTitle] = useState();
   const [itemDescription, setItemDescription] = useState();
   const [itemPricePerItem, setItemPrice] = useState();
+  const [err, setErr] = useState();
   const params = useParams();
 
   useEffect(() => {
@@ -23,16 +24,37 @@ function UpdateMenuItem() {
 
   const submitChanges = async (event) => {
     event.preventDefault();
-    const changes = await fetch(`/api/menus/${params.id}`, {
-      method: "put",
-      headers: new Headers({ "Content-Type": "application/json" }),
-      body: JSON.stringify(menuItem),
-    });
-    console.log(changes);
+    try {
+      const changes = await fetch(`/api/menus/${params.id}`, {
+        method: "put",
+        headers: new Headers({ "Content-Type": "application/json" }),
+        body: JSON.stringify(menuItem),
+      });
+
+      const result = await changes.json();
+      console.log(changes);
+
+      if (result.error) {
+        setErr(result.error);
+      } else {
+        setErr(result.message);
+        console.log(err);
+      }
+    } catch (error) {
+      console.log(result);
+    }
   };
   return (
     <div className="page">
       <h1 className="edit-menu-item-title">Update menu item</h1>
+      {err != "" ? (
+        <div className="error">
+          {" "}
+          <h2>{err}</h2>
+        </div>
+      ) : (
+        ""
+      )}
 
       <form onSubmit={submitChanges} className="edit-menu-item-container">
         <div className="form-group">
