@@ -20,7 +20,7 @@ import SignUp from "./pages/SignUp";
 import AddMenu from "./pages/addMenu";
 import UpdateMenu from "./pages/UpdateMenu";
 import UpdateMenuItem from "./pages/UpdateMenuItem";
-
+import AboutUs from './pages/AboutUs';
 
 const router = createBrowserRouter(
   createRoutesFromElements([
@@ -41,6 +41,7 @@ const router = createBrowserRouter(
         path="/dashboard/update-menu-item/:id"
         element={<UpdateMenuItem />}
       />
+      <Route path='aboutUs' element={<AboutUs />} />
       
     </Route>,
   ])
