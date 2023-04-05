@@ -1,6 +1,7 @@
 import "../style/home.css";
 import Logo from "../images/logos.png";
 import Gradient from "../images/gradient.jpg";
+import Footer from "./Footer";
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
           cup of coffee.
         </p>
       </div>
+      <Footer/>
     </div>
   );
 }

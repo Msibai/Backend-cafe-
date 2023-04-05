@@ -1,0 +1,42 @@
+
+body {
+  margin: 0;
+}
+
+.footer {
+  background-color: #8d764b;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin-top: 10px;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.social-links i {
+  font-size: 20px;
+}
