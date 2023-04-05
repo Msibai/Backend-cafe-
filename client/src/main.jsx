@@ -21,6 +21,7 @@ import AddMenu from "./pages/addMenu";
 import UpdateMenu from "./pages/UpdateMenu";
 import UpdateMenuItem from "./pages/UpdateMenuItem";
 
+
 const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path="/" element={<App />}>
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
         path="/dashboard/update-menu-item/:id"
         element={<UpdateMenuItem />}
       />
+      
     </Route>,
   ])
 );
