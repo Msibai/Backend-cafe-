@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+
+.home-page-container{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content:center;
+    border:2px solid black;
+    border-radius:2rem;
+}
+
+.home-page-logo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 35rem;
+    animation-name:fadeIn;
+    animation-duration:2s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+}
+
+.background-image-home{
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:cover;
+}
+
+.intro-text{
+    padding-bottom:4rem;
+    color:white;
+    text-align:center;
+    font-family: 'Lora', serif;
+    width:70%;
+    letter-spacing: 2px;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    opacity:0;
+    animation-name:fadeIn;
+    animation-duration:2s;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+
+
+}
+ 
+
+@keyframes fadeIn{
+    0%{opacity:0}
+    100%{opacity:1}
+}

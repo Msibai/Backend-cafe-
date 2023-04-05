@@ -42,7 +42,7 @@ html{
   margin:1rem;
 }
 
-.form-container {
+.edit-menu-item-container {
     display: flex;
     flex-direction: column;
     align-items: center;
