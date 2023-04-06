@@ -16,10 +16,14 @@ loginRouter.post('/', async (request, response) => {
 		email: request.body.email,
 		password: Encrypt(request.body.password),
 	});
-	response.status(201);
-	 request.session.user = user;
-	 response.json(user);
-
+	if (user) {
+		response.status(201);
+		request.session.user = user;
+		response.json({ user });
+	} else {
+		response.status(401);
+		response.json({ loggedIn: false });
+	}
 });
 
 loginRouter.get('/', async (request, response) => {
