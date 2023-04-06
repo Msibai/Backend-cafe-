@@ -16,10 +16,12 @@ import MenuItem from './pages/MenuItem';
 import Oreder from './pages/Order';
 import OredersStatus from './pages/OrdersStatus';
 import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp'; 
+import SignUp from './pages/SignUp';
 import AddMenu from './pages/addMenu';
 import UpdateMenu from './pages/UpdateMenu';
 import UpdateMenuItem from './pages/UpdateMenuItem';
+import AboutUs from './pages/AboutUs';
+import MyAccount from './pages/MyAccount';
 
 const router = createBrowserRouter(
 	createRoutesFromElements([
@@ -35,14 +37,19 @@ const router = createBrowserRouter(
 			</Route>
 			<Route path='dashboard' element={<AdminDashboard />} />
 			<Route path='/dashboard/addmenu' element={<AddMenu />} />
-			<Route path ='/dashboard/updatemenu' element={<UpdateMenu />} />
-			<Route path='/dashboard/update-menu-item/:id' element={<UpdateMenuItem />} />
+			<Route path='/dashboard/updatemenu' element={<UpdateMenu />} />
+			<Route
+				path='/dashboard/update-menu-item/:id'
+				element={<UpdateMenuItem />}
+			/>
+			<Route path='aboutUs' element={<AboutUs />} />
+			<Route path='myaccount' element={<MyAccount />} />
 		</Route>,
 	])
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-	<RouterProvider router={router} />	
+		<RouterProvider router={router} />
 	</React.StrictMode>
 );

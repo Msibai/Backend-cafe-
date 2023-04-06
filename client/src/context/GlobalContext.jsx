@@ -32,7 +32,7 @@ export const GlobalProvider = ({ children }) => {
     }
     else if(!result.user.admin && !result.user.restaurantWorker){
         setIscustomer(true);
-        navigate("/")
+        navigate("/myaccount", { state: { id: result.user._id } });
       }	
 	}
   
@@ -42,9 +42,7 @@ export const GlobalProvider = ({ children }) => {
       method: "delete",
     });
     const result = await response.json();
-    console.log(result)
     setAuth(false);
-    navigate("/")
   };
 
 

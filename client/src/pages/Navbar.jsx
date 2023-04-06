@@ -21,10 +21,10 @@ import { useContext } from "react";
           </li>
 
           <li className="logout" onClick={logout} >
-            <a href="">Logout</a>
+            <a href="/">Logout</a>
           </li>
           {iscustomer ? (
-          <li className="logout">
+          <li className="customer-orders">
             <NavLink to="/"className={({ isActive }) => (isActive ? "active" : "")}
                      onClick={() => {
                        if (props.toggle) {
@@ -32,7 +32,7 @@ import { useContext } from "react";
                        }
                      }}
             > My orders </NavLink>
-          </li>) : (<li className="logout">
+          </li>) : (<li className="workers-order-lists">
             <NavLink to="/"className={({ isActive }) => (isActive ? "active" : "")}
                      onClick={() => {
                        if (props.toggle) {
@@ -45,15 +45,15 @@ import { useContext } from "react";
           )}
           
           {iscustomer ? (
-          <li className="logout">
-            <NavLink to="/"className={({ isActive }) => (isActive ? "active" : "")}
+          <li className="myaccount">
+            <NavLink to="/myaccount"className={({ isActive }) => (isActive ? "active" : "")}
                      onClick={() => {
                        if (props.toggle) {
                          props.setToggle(!props.toggle);
                        }
                      }}
             > {user} </NavLink>
-          </li>) : (<li className="logout">
+          </li>) : (<li className="dashboard">
             <NavLink to="/dashboard"className={({ isActive }) => (isActive ? "active" : "")}
                      onClick={() => {
                        if (props.toggle) {
