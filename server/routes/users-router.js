@@ -32,8 +32,6 @@ userRouter.post('/', async (request, response, next) => {
 		user.phoneNumber = request.body.phoneNumber;
 		user.email = request.body.email;
 		user.password = Encrypt(request.body.password);
-		user.admin = request.body.admin;
-		user.restaurantWorker = request.body.restaurantWorker;
 		await user.save();
 		response.json({ User: 'Created' });
 	} catch (error) {
@@ -71,13 +69,15 @@ userRouter.patch('/:id', async (request, response) => {
 });
 
 userRouter.put('/:id', async (request, response) => {
-	const user = await mongoose.models.users.findByIdAndUpdate(
-		request.params.id,
-		request.body
-	);
-	await user.save();
+	if (request.session.user) {
+		const user = await mongoose.models.users.findByIdAndUpdate(
+			request.params.id,
+			request.body
+		);
+		await user.save();
 
-	response.json({ Menu: 'Updated' });
+		response.json({ Menu: 'Updated' });
+	}
 });
 
 export default userRouter;

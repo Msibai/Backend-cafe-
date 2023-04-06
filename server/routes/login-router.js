@@ -1,15 +1,7 @@
 import Router from 'express';
 const loginRouter = Router();
 import mongoose from 'mongoose';
-import crypto from 'crypto';
-const salt = 'pass'.toString('hex');
-
-function Encrypt(password) {
-	let hash = crypto
-		.pbkdf2Sync(password, salt, 1000, 64, 'sha512')
-		.toString('hex');
-	return hash;
-}
+import Encrypt from '../utils/get-hash.js';
 
 loginRouter.post('/', async (request, response) => {
 	let user = await mongoose.models.users.findOne({
@@ -25,7 +17,6 @@ loginRouter.post('/', async (request, response) => {
 		response.json({ loggedIn: false });
 	}
 });
-
 
 loginRouter.get('/', async (request, response) => {
 	if (request.session?.user) {
@@ -49,7 +40,7 @@ loginRouter.get('/', async (request, response) => {
 });
 
 loginRouter.delete('/', async (request, response) => {
-	delete request.session.user
+	delete request.session.user;
 	response.json({ loggedIn: false });
 });
 
