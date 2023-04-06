@@ -70,4 +70,14 @@ userRouter.patch('/:id', async (request, response) => {
 	response.json({ User: 'Updated' });
 });
 
+userRouter.put('/:id', async (request, response) => {
+	const user = await mongoose.models.users.findByIdAndUpdate(
+		request.params.id,
+		request.body
+	);
+	await user.save();
+
+	response.json({ Menu: 'Updated' });
+});
+
 export default userRouter;
