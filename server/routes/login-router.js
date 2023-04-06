@@ -26,6 +26,7 @@ loginRouter.post('/', async (request, response) => {
 	}
 });
 
+
 loginRouter.get('/', async (request, response) => {
 	if (request.session?.user) {
 		let user = await mongoose.models.users.findOne({
@@ -48,7 +49,8 @@ loginRouter.get('/', async (request, response) => {
 });
 
 loginRouter.delete('/', async (request, response) => {
-	delete request.session.user.json({ loggedIn: false });
+	delete request.session.user
+	response.json({ loggedIn: false });
 });
 
 export default loginRouter;

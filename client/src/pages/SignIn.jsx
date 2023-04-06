@@ -1,27 +1,17 @@
-import '../style/sign-in.css';
-import background from '../images/coffeee.jpg';
-import { useRef, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+
+import "../style/sign-in.css";
+import background from "../images/coffeee.jpg";
+import { useRef} from "react";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import GlobalContext from "../context/GlobalContext.jsx";
+
 
 const SignIn = () => {
+  const { submitLogin } = useContext(GlobalContext);
+  
 	const emailRef = useRef();
 	const passwordRef = useRef();
-	const [user, setUser] = useState({});
-	const navigate = useNavigate();
-
-	const submitLogin = async (email, password) => {
-		const response = await fetch('/api/login', {
-			method: 'post',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ email, password }),
-		});
-		const result = await response.json();
-		if (result.user.admin) {
-			navigate('/dashboard');
-		} else if (!result.user.admin && !result.user.restaurantWorker) {
-			navigate('/myaccount', { state: { id: result.user._id } });
-		}
-	};
 
 	return (
 		<div
