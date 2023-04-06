@@ -16,11 +16,12 @@ loginRouter.post('/', async (request, response) => {
 		email: request.body.email,
 		password: Encrypt(request.body.password),
 	});
+	if(user){
 	response.status(201);
 	 request.session.user = user;
-	 response.json(user);
-
-});
+	 response.json({user});}
+	 
+	 });
 
 loginRouter.get('/', async (request, response) => {
 	if (request.session?.user) {
@@ -44,7 +45,8 @@ loginRouter.get('/', async (request, response) => {
 });
 
 loginRouter.delete('/', async (request, response) => {
-	delete request.session.user.json({ loggedIn: false });
+	delete request.session.user
+	response.json({ loggedIn: false });
 });
 
 export default loginRouter;
