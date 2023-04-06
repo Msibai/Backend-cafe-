@@ -30,7 +30,11 @@ function UpdateMenu() {
             >
               <button className="menu-item-button"> Update</button>
             </Link>
+            <Link
+              to={`/dashboard/delete-menu-item/${menu._id}`}
+              state={{ data: menu._id }}>
             <button className="delete-menu-button">Delete</button>
+            </Link>
           </div>
         ))}
       </div>
