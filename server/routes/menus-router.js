@@ -36,13 +36,18 @@ menusRouter.post("/", async (request, response) => {
 });
 
 menusRouter.delete("/:id", async (request, response) => {
-  if (response.session?.user.admin) {
+  if (request.session.user && request.session.user.admin){
     await mongoose.models.menus.findByIdAndDelete(request.params.id);
-    response.json({ deleted: "menu-item" });
+    response.json({ message: "Successfully deleted!" });
   } else {
     response.status(403);
-    response.json({ error: "only admin can delete a menu.item" });
+    response.json({error:"You must be an admin to delete a menu item"})
   }
+   
+     
+  
+    
+  
 });
 
 menusRouter.patch("/:id", async (request, response) => {

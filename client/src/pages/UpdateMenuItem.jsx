@@ -1,4 +1,4 @@
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../style/edit-menu.css";
 
@@ -7,15 +7,11 @@ function UpdateMenuItem() {
   const [itemName, setItemTitle] = useState();
   const [itemDescription, setItemDescription] = useState();
   const [itemPricePerItem, setItemPrice] = useState();
-  const navigate = useNavigate;
+ 
   const [err, setErr] = useState("");
 
   const params = useParams();
 
-  const goBack = () => {
-    let path = "/dashboard/updatemenu";
-    navigate(path);
-  };
 
   useEffect(() => {
     const fetchItem = async () => {
