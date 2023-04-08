@@ -37,6 +37,16 @@ html{
   margin:1rem;
 }
 
+.menu-item-img{
+display:flex;
+justify-content: center;
+align-items:center;
+margin: 0 auto;
+
+
+width:10rem;
+}
+
 .edit-menu-item-container {
     display: flex;
     flex-direction: column;
