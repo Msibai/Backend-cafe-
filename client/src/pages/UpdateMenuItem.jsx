@@ -1,17 +1,23 @@
-import { useParams} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../style/edit-menu.css";
+import FileBase64 from "react-file-base64";
 
 function UpdateMenuItem() {
   const [menuItem, setMenuItem] = useState();
   const [itemName, setItemTitle] = useState();
   const [itemDescription, setItemDescription] = useState();
+  const [itemImg, setItemImg] = useState();
   const [itemPricePerItem, setItemPrice] = useState();
- 
+
   const [err, setErr] = useState("");
+  const navigate = useNavigate();
 
   const params = useParams();
 
+  function goBack() {
+    navigate("/dashboard/updatemenu");
+  }
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -22,8 +28,6 @@ function UpdateMenuItem() {
 
     fetchItem();
   }, [params.id]);
-
-  console.log(menuItem);
 
   const submitChanges = async (event) => {
     event.preventDefault();
@@ -96,11 +100,20 @@ function UpdateMenuItem() {
             }
           />
         </div>
+        <div className="form-group"></div>
+        <label htmlFor="img">Image</label>
+        <FileBase64
+          multiple={false}
+          onDone={({ base64 }) => setMenuItem({ ...menuItem, itemImg: base64 })}
+        />
 
         <button type="submit" className="submit-edit-button">
-          Update
+          Update item
         </button>
       </form>
+      <button className="back-button" onClick={goBack}>
+        Back
+      </button>
     </div>
   );
 }

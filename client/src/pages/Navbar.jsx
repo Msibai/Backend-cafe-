@@ -20,7 +20,7 @@ import { useContext } from 'react';
           </li>
           <li>
             <NavLink
-              to="/"
+              to="/menu"
               className={({ isActive }) => (isActive ? "active" : "")}
               onClick={() => props.setToggle(!props.toggle)}
             >
@@ -29,7 +29,7 @@ import { useContext } from 'react';
           </li>
 
           <li className="logout" onClick={logout} >
-            <a href="/">Logout</a>
+            Logout
           </li>
          { iscustomer  &&
              (
@@ -101,7 +101,7 @@ import { useContext } from 'react';
           </li>
           <li>
             <NavLink
-              to="/"
+              to="/menu"
               className={({ isActive }) => (isActive ? "active" : "")}
               onClick={() => props.setToggle(!props.toggle)}
             >

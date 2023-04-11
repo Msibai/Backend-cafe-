@@ -1,11 +1,13 @@
 import Router from "express";
 import mongoose, { Schema } from "mongoose";
+
 const menusRouter = Router();
 
 const menuSchema = new Schema({
   itemName: { type: String, required: true },
   description: { type: String },
   pricePerItem: { type: Number, required: true },
+  itemImg: { type: String },
 });
 
 mongoose.model("menus", menuSchema);
@@ -26,28 +28,25 @@ menusRouter.post("/", async (request, response) => {
     menu.itemName = request.body.itemName;
     menu.description = request.body.description;
     menu.pricePerItem = request.body.pricePerItem;
+    menu.itemImg = request.body.itemImg;
+
     await menu.save();
     response.json({ message: "Menu item successfully added" });
     return;
   } else {
     response.status(403);
-    response.json({ error: "Only an admin can add a new menu item" });
+    response.json({ error: "You must be an admin to add a menu item" });
   }
 });
 
 menusRouter.delete("/:id", async (request, response) => {
-  if (request.session.user && request.session.user.admin){
+  if (request.session.user && request.session.user.admin) {
     await mongoose.models.menus.findByIdAndDelete(request.params.id);
     response.json({ message: "Successfully deleted!" });
   } else {
     response.status(403);
-    response.json({error:"You must be an admin to delete a menu item"})
+    response.json({ error: "You must be an admin to delete a menu item" });
   }
-   
-     
-  
-    
-  
 });
 
 menusRouter.patch("/:id", async (request, response) => {

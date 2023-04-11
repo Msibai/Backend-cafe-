@@ -3,6 +3,7 @@ import Header from './pages/Header';
 import {GlobalProvider} from "../src/context/GlobalContext.jsx"
 
 function App() {
+	console.log(sessionStorage);
 	return (
 		<GlobalProvider>
 		<div className='App'>

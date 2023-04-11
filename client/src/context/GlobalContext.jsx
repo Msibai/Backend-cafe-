@@ -4,13 +4,19 @@ import { useNavigate } from 'react-router-dom';
 const GlobalContext = createContext(null);
 
 export const GlobalProvider = ({ children }) => {
-
   // useState for all variables
-  const [auth, setAuth] = useState(false);
-  const [isworker, setIsworker] = useState(false);
-  const [ isadmin, setIsadmin] = useState(false);
-  const [iscustomer, setIscustomer] = useState(false);
+  const authFromSession = sessionStorage.getItem("auth") || false
+  const isadminFromSession = sessionStorage.getItem("isadmin") || false
+  const isworkerFromSession = sessionStorage.getItem("isworker") || false
+  const iscustomerFromSession = sessionStorage.getItem("iscustomer") || false
+
+  const [auth, setAuth] = useState(authFromSession);
+  const [isworker, setIsworker] = useState(isworkerFromSession);
+  const [ isadmin, setIsadmin] = useState(isadminFromSession);
+  const [iscustomer, setIscustomer] = useState(iscustomerFromSession);
    const [user,setUser] = useState("");
+   const [menus, setMenus] = useState([]);
+
   const navigate = useNavigate();
 
   const submitLogin = async (email, password) => {
@@ -23,18 +29,26 @@ export const GlobalProvider = ({ children }) => {
     if(result){
     setAuth(true);
     setUser(result.user.name);
+    sessionStorage.setItem("User",result.user.name)
+    sessionStorage.setItem("auth",auth)
+
 }
 
     if(result.user.admin){
         setIsadmin(true);
+        sessionStorage.setItem("isadmin",isadmin)
+
         navigate('/dashboard')
     }
     else if(result.user.restaurantWorker){
       setIsworker(true);
+      sessionStorage.setItem("isworker",isworker)
+
       navigate('')
     }
     else if(!result.user.admin && !result.user.restaurantWorker){
         setIscustomer(true);
+        sessionStorage.setItem("iscustomer",iscustomer)
         navigate("/myaccount", { state: { id: result.user._id } });
       }	
 	}
@@ -46,8 +60,24 @@ export const GlobalProvider = ({ children }) => {
     });
     const result = await response.json();
     setAuth(false);
+    
   };
+ 
+  const fetchMenuItems = async () => {
+    const response = await fetch("/api/menus");
+    const data = await response.json();
+    setMenus(data);
+  };
+  
 
+  useEffect(() => {
+
+  fetchMenuItems();
+}, []);
+
+
+
+  
 
   return (
     <GlobalContext.Provider
@@ -58,13 +88,15 @@ export const GlobalProvider = ({ children }) => {
         isadmin,
         isworker,
         iscustomer,
-        user
+        user,
+        menus
 
       }}
     >
       {children}
     </GlobalContext.Provider>
   );
+
 };
 
 export default GlobalContext;
