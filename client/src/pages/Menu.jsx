@@ -1,20 +1,13 @@
 import { useState, useEffect } from "react";
 import "../style/edit-menu.css";
 import { Link } from "react-router-dom";
+import GlobalContext from '../context/GlobalContext.jsx';
+import { useContext } from 'react';
 
 function Menu() {
-  const [menus, setMenus] = useState([]);
+  const {menus} = useContext(GlobalContext);
 
-  useEffect(() => {
-    const fetchMenuItems = async () => {
-      const response = await fetch("/api/menus");
-      const data = await response.json();
-      setMenus(data);
-    };
-
-    fetchMenuItems();
-  }, []);
-
+ 
   return (
     <div className="update-menu-title">
       <h1>Menu</h1>

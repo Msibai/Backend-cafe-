@@ -14,7 +14,7 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons";
       <header>
         <div className="header-container">
           <div className="app-title">
-            <h3> Fuel your codes with our coffee.</h3>
+            <h3 className = "main-title"> Fuel your codes with our coffee.</h3>
     
           </div>
           <div className ="small-screen-app-title">
