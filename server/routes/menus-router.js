@@ -35,7 +35,7 @@ menusRouter.post("/", async (request, response) => {
     return;
   } else {
     response.status(403);
-    response.json({ error: "Only an admin can add a new menu item" });
+    response.json({ error: "You must be an admin to add a menu item" });
   }
 });
 

@@ -56,6 +56,7 @@ width:10rem;
     border-radius:10px;
     padding:2rem;
     background-color: white;
+    margin-bottom:1rem;
 
   }
 
@@ -108,7 +109,18 @@ width:10rem;
     animation-duration: 1s;
     animation-iteration-count: 3;
     animation-fill-mode:forwards;
+    display: flex;
+  justify-content: center;
+  align-items: center;
   }
+
+  
+.back-button{
+  display:block;
+  margin:auto;
+  
+}
+
   
    @keyframes pulsate{
     0%{opacity:0}
@@ -124,10 +136,11 @@ width:10rem;
     color: red;
    }
   
-
-  
-
-  
+   
+   .cart-quantity{
+    font-size:1.5rem;
+    padding:1rem;
+   }
 
   
   label {

@@ -29,8 +29,6 @@ function UpdateMenuItem() {
     fetchItem();
   }, [params.id]);
 
-  console.log(menuItem);
-
   const submitChanges = async (event) => {
     event.preventDefault();
     try {
@@ -110,10 +108,12 @@ function UpdateMenuItem() {
         />
 
         <button type="submit" className="submit-edit-button">
-          Update
+          Update item
         </button>
       </form>
-      <button onClick={goBack}>Back</button>
+      <button className="back-button" onClick={goBack}>
+        Back
+      </button>
     </div>
   );
 }
