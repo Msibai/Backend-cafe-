@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "../style/edit-menu.css";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 function UpdateMenu() {
   const [menus, setMenus] = useState([]);
@@ -17,6 +17,7 @@ function UpdateMenu() {
 
   return (
     <div className="update-menu-title">
+    <Outlet></Outlet>
       <h1>Update Menu</h1>
       <div className="menu-container">
         {menus.map((menu) => (
@@ -25,13 +26,13 @@ function UpdateMenu() {
             <p className="menu-item-description">{menu.description}</p>
             <p className="menu-item-price">{menu.pricePerItem} kr</p>
             <Link
-              to={`/dashboard/update-menu-item/${menu._id}`}
+              to={`${menu._id}`}
               state={{ data: menu._id }}
             >
               <button className="menu-item-button"> Update</button>
             </Link>
             <Link
-              to={`/dashboard/delete-menu-item/${menu._id}`}
+              to={`${menu._id}`}
               state={{ data: menu._id }}>
             <button className="delete-menu-button">Delete</button>
             </Link>

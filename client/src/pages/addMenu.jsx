@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useRef } from "react";
 import "./css/addMenu.css";
+import { Outlet } from "react-router-dom";
 
 function AddMenu() {
   const nameRef = useRef();
@@ -33,6 +34,7 @@ function AddMenu() {
   };
 
   return (
+    
     <div className="page">
       <h1 className="add-menu-item-title"> Add a menu item </h1>
       {err != "" ? (

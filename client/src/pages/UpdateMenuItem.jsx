@@ -1,4 +1,4 @@
-import { useParams} from "react-router-dom";
+import { Outlet, useParams} from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../style/edit-menu.css";
 
@@ -50,6 +50,7 @@ function UpdateMenuItem() {
 
   return (
     <div className="page">
+    <Outlet></Outlet>
       <h1 className="edit-menu-item-title">Update menu item</h1>
       {err != "" ? (
         <div className="error">
