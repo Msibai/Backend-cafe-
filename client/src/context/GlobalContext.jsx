@@ -1,9 +1,10 @@
-import { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const GlobalContext = createContext(null);
 
 export const GlobalProvider = ({ children }) => {
+
   // useState for all variables
   const [auth, setAuth] = useState(false);
   const [isworker, setIsworker] = useState(false);
@@ -12,8 +13,6 @@ export const GlobalProvider = ({ children }) => {
    const [user,setUser] = useState("");
   const navigate = useNavigate();
 
-  
-
   const submitLogin = async (email, password) => {
     const response = await fetch("/api/login", {
       method: "post",
@@ -21,28 +20,21 @@ export const GlobalProvider = ({ children }) => {
       body: JSON.stringify({ email, password }),
     });
     const result= await response.json();
-    console.log(result);
     if(result){
     setAuth(true);
-    console.log("auth is true"+ auth)
     setUser(result.user.name);
 }
 
     if(result.user.admin){
         setIsadmin(true);
-        console.log("admin is true"+ isadmin)
-
         navigate('/dashboard')
     }
     else if(result.user.restaurantWorker){
       setIsworker(true);
-      console.log("worker is true"+ isworker)
-
       navigate('')
     }
     else if(!result.user.admin && !result.user.restaurantWorker){
         setIscustomer(true);
-        console.log("cust is true"+ iscustomer)
         navigate("/myaccount", { state: { id: result.user._id } });
       }	
 	}

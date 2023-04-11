@@ -22,6 +22,7 @@ import UpdateMenu from './pages/UpdateMenu';
 import UpdateMenuItem from './pages/UpdateMenuItem';
 import AboutUs from './pages/AboutUs';
 import MyAccount from './pages/MyAccount';
+import DeleteMenuItem from './pages/DeleteMenuItem';
 
 const router = createBrowserRouter(
 	createRoutesFromElements([
@@ -39,13 +40,14 @@ const router = createBrowserRouter(
 			<Route path='/dashboard/addmenu' element={<AddMenu />} />
 			<Route path='/dashboard/updatemenu' element={<UpdateMenu />} />
 			<Route
-				path='/dashboard/update-menu-item/:id'
-				element={<UpdateMenuItem />}
-			/>
+				path='/dashboard/update-menu-item/:id'element={<UpdateMenuItem />}/>
+        <Route path="/dashboard/delete-menu-item/:id" element={<DeleteMenuItem />}/>
+			
 			<Route path='aboutUs' element={<AboutUs />} />
 			<Route path='myaccount' element={<MyAccount />} />
 		</Route>,
 	])
+
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(

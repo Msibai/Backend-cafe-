@@ -1,7 +1,6 @@
-import { NavLink } from "react-router-dom";
-import GlobalContext from "../context/GlobalContext.jsx";
-import { useContext } from "react";
-
+import { NavLink } from 'react-router-dom';
+import GlobalContext from '../context/GlobalContext.jsx';
+import { useContext } from 'react';
 
  function Navbar (props) {
  const { auth, logout , isadmin, iscustomer,isworker, user } = useContext(GlobalContext);

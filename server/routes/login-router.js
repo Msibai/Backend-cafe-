@@ -1,8 +1,7 @@
 import Router from 'express';
 const loginRouter = Router();
 import mongoose from 'mongoose';
-import Encrypt from '../utils/get-hash.js'
-const salt = 'pass'.toString('hex');
+import Encrypt from '../utils/get-hash.js';
 
 
 loginRouter.post('/', async (request, response) => {
@@ -22,7 +21,6 @@ loginRouter.post('/', async (request, response) => {
 		response.json({ loggedIn: false });
 	}
 });
-
 
 loginRouter.get('/', async (request, response) => {
 	if (request.session?.user) {
@@ -46,7 +44,7 @@ loginRouter.get('/', async (request, response) => {
 });
 
 loginRouter.delete('/', async (request, response) => {
-	delete request.session.user
+	delete request.session.user;
 	response.json({ loggedIn: false });
 });
 
