@@ -1,8 +1,9 @@
 import Router from "express";
 const loginRouter = Router();
 
-import mongoose from "mongoose";
-import Encrypt from "../utils/get-hash.js";
+import mongoose from 'mongoose';
+import Encrypt from '../utils/get-hash.js';
+
 
 loginRouter.post("/", async (request, response) => {
   let user = await mongoose.models.users.findOne({
@@ -19,30 +20,32 @@ loginRouter.post("/", async (request, response) => {
   }
 });
 
-loginRouter.get("/", async (request, response) => {
-  if (request.session?.user) {
-    let user = await mongoose.models.users.findOne({
-      email: request.session.user.email,
-      password: request.session.user.password,
-    });
-    if (user) {
-      response.json({
-        name: request.session.user.name,
-        email: request.session.user.email,
-        admin: request.session.user.admin,
-        restaurantWorker: request.session.user.restaurantWorker,
-        loggedIn: true,
-      });
-      return;
-    }
-  }
 
-  response.json({ loggedIn: false });
+loginRouter.get('/', async (request, response) => {
+	if (request.session?.user) {
+		let user = await mongoose.models.users.findOne({
+			email: request.session.user.email,
+			password: request.session.user.password,
+		});
+		if (user) {
+			response.json({
+				name: request.session.user.name,
+				email: request.session.user.email,
+				admin: request.session.user.admin,
+				restaurantWorker: request.session.user.restaurantWorker,
+				loggedIn: true,
+			});
+			return;
+		}
+	}
+
+	response.json({ loggedIn: false });
 });
 
-loginRouter.delete("/", async (request, response) => {
-  delete request.session.user;
-  response.json({ loggedIn: false });
+loginRouter.delete('/', async (request, response) => {
+	delete request.session.user;
+	response.json({ loggedIn: false });
+
 });
 
 export default loginRouter;
