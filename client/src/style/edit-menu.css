@@ -37,6 +37,16 @@ html{
   margin:1rem;
 }
 
+.menu-item-img{
+display:flex;
+justify-content: center;
+align-items:center;
+margin: 0 auto;
+border:2px solid black;
+box-shadow:2px 2px 2px;
+width:10rem;
+}
+
 .edit-menu-item-container {
     display: flex;
     flex-direction: column;
@@ -46,6 +56,7 @@ html{
     border-radius:10px;
     padding:2rem;
     background-color: white;
+    margin-bottom:1rem;
 
   }
 
@@ -98,7 +109,18 @@ html{
     animation-duration: 1s;
     animation-iteration-count: 3;
     animation-fill-mode:forwards;
+    display: flex;
+  justify-content: center;
+  align-items: center;
   }
+
+  
+.back-button{
+  display:block;
+  margin:auto;
+  
+}
+
   
    @keyframes pulsate{
     0%{opacity:0}
@@ -114,10 +136,11 @@ html{
     color: red;
    }
   
-
-  
-
-  
+   
+   .cart-quantity{
+    font-size:1.5rem;
+    padding:1rem;
+   }
 
   
   label {

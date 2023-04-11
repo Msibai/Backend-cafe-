@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const GlobalContext = createContext(null);
 
 export const GlobalProvider = ({ children }) => {
+
 	// useState for all variables
 	const [auth, setAuth] = useState(false);
 	const [isadmin, setIsadmin] = useState(false);
@@ -53,6 +54,7 @@ export const GlobalProvider = ({ children }) => {
 			{children}
 		</GlobalContext.Provider>
 	);
+
 };
 
 export default GlobalContext;
