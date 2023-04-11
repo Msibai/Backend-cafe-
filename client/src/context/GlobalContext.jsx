@@ -8,35 +8,30 @@ export const GlobalProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
   const [isadmin, setIsadmin] = useState(false);
   const [iscustomer, setIscustomer] = useState(false);
-  const [user,setUser] = useState("");
+  const [user, setUser] = useState("");
   const navigate = useNavigate();
 
-  
-
   const submitLogin = async (email, password) => {
-
     const response = await fetch("/api/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
-    const result= await response.json();
-    if(result){
-    setAuth(true);
-    setUser(result.user.name);
-}
-
-    if((result.user.admin) || (result.user.restaurantWorker)){
-        setIsadmin(true);
-        navigate('/dashboard')
+    const result = await response.json();
+    if (result) {
+      setAuth(true);
+      setUser(result.user.name);
     }
-    else if(!result.user.admin && !result.user.restaurantWorker){
-        setIscustomer(true);
-        navigate("/myaccount", { state: { id: result.user._id } });
-      }	
-	}
-  
- 
+
+    if (result.user.admin || result.user.restaurantWorker) {
+      setIsadmin(true);
+      navigate("/dashboard");
+    } else if (!result.user.admin && !result.user.restaurantWorker) {
+      setIscustomer(true);
+      navigate("/myaccount", { state: { id: result.user._id } });
+    }
+  };
+
   const logout = async () => {
     const response = await fetch("/api/login", {
       method: "delete",
@@ -44,7 +39,6 @@ export const GlobalProvider = ({ children }) => {
     const result = await response.json();
     setAuth(false);
   };
-
 
   return (
     <GlobalContext.Provider
@@ -54,8 +48,7 @@ export const GlobalProvider = ({ children }) => {
         logout,
         isadmin,
         iscustomer,
-        user
-
+        user,
       }}
     >
       {children}

@@ -28,6 +28,7 @@ menusRouter.post("/", async (request, response) => {
     menu.itemName = request.body.itemName;
     menu.description = request.body.description;
     menu.pricePerItem = request.body.pricePerItem;
+    menu.itemImg = request.body.itemImg;
 
     await menu.save();
     response.json({ message: "Menu item successfully added" });
