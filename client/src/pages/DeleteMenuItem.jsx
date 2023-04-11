@@ -70,7 +70,9 @@ function DeleteMenuItem() {
           Delete
         </button>
       </form>
-      <button onClick={goBack}>Back</button>
+      <button className="back-button" onClick={goBack}>
+        Back
+      </button>
     </div>
   );
 }
