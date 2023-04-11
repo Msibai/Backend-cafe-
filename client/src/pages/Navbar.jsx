@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 import GlobalContext from "../context/GlobalContext.jsx";
 import { useContext } from "react";
 
+
  function Navbar (props) {
- const { auth, logout , isadmin, iscustomer, user } = useContext(GlobalContext);
- console.log(auth);
+ const { auth, logout , isadmin, iscustomer,isworker, user } = useContext(GlobalContext);
 
   return (
     <nav>
@@ -19,11 +19,22 @@ import { useContext } from "react";
               Home
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+              onClick={() => props.setToggle(!props.toggle)}
+            >
+              Menu
+            </NavLink>
+          </li>
 
           <li className="logout" onClick={logout} >
             <a href="/">Logout</a>
           </li>
-          {iscustomer ? (
+         { iscustomer  &&
+             (
+                <div>
           <li className="customer-orders">
             <NavLink to="/"className={({ isActive }) => (isActive ? "active" : "")}
                      onClick={() => {
@@ -32,7 +43,23 @@ import { useContext } from "react";
                        }
                      }}
             > My orders </NavLink>
-          </li>) : (<li className="workers-order-lists">
+          </li>
+          <li className="myaccount">
+            <NavLink to="/myaccount"className={({ isActive }) => (isActive ? "active" : "")}
+                     onClick={() => {
+                       if (props.toggle) {
+                         props.setToggle(!props.toggle);
+                       }
+                     }}
+            > {user} </NavLink>
+          </li> 
+          </div>
+          )}
+
+
+          { isworker &&
+            (
+              <li className="workers-order-lists">
             <NavLink to="/"className={({ isActive }) => (isActive ? "active" : "")}
                      onClick={() => {
                        if (props.toggle) {
@@ -43,17 +70,9 @@ import { useContext } from "react";
           </li>
 
           )}
-          
-          {iscustomer ? (
-          <li className="myaccount">
-            <NavLink to="/myaccount"className={({ isActive }) => (isActive ? "active" : "")}
-                     onClick={() => {
-                       if (props.toggle) {
-                         props.setToggle(!props.toggle);
-                       }
-                     }}
-            > {user} </NavLink>
-          </li>) : (<li className="dashboard">
+          { isadmin &&
+          (
+          <li className="dashboard">
             <NavLink to="/dashboard"className={({ isActive }) => (isActive ? "active" : "")}
                      onClick={() => {
                        if (props.toggle) {
@@ -79,6 +98,15 @@ import { useContext } from "react";
               }}
             >
               Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+              onClick={() => props.setToggle(!props.toggle)}
+            >
+              Menu
             </NavLink>
           </li>
           <li>

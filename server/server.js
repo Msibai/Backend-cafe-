@@ -23,7 +23,7 @@ api.use(
 		cookie: {
 			secure: false,
 			httpOnly: true,
-			maxAge: 365 * 24 * 60 * 60 * 1000,
+			maxAge: 8*60*60*1000 ,
 		},
 	})
 );

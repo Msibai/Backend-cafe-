@@ -1,21 +1,18 @@
 import Router from 'express';
 const loginRouter = Router();
 import mongoose from 'mongoose';
-import crypto from 'crypto';
+import Encrypt from '../utils/get-hash.js'
 const salt = 'pass'.toString('hex');
 
-function Encrypt(password) {
-	let hash = crypto
-		.pbkdf2Sync(password, salt, 1000, 64, 'sha512')
-		.toString('hex');
-	return hash;
-}
 
 loginRouter.post('/', async (request, response) => {
+	console.log(request.body.email , request.body.password)
+
 	let user = await mongoose.models.users.findOne({
 		email: request.body.email,
 		password: Encrypt(request.body.password),
 	});
+	console.log(user);
 	if (user) {
 		response.status(201);
 		request.session.user = user;
