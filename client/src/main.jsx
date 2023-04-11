@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useContext } from 'react';
+import ReactDOM  from 'react-dom/client';
 import {
 	BrowserRouter,
 	createBrowserRouter,
 	createRoutesFromElements,
+	Outlet,
 	Route,
 	RouterProvider,
 } from 'react-router-dom';
@@ -23,8 +24,10 @@ import UpdateMenuItem from './pages/UpdateMenuItem';
 import AboutUs from './pages/AboutUs';
 import MyAccount from './pages/MyAccount';
 import DeleteMenuItem from './pages/DeleteMenuItem';
+import PrivateRoutes from './PrivateRoutes.jsx';
 
 const router = createBrowserRouter(
+
 	createRoutesFromElements([
 		<Route path='/' element={<App />}>
 			<Route index element={<Home />} />
@@ -36,13 +39,18 @@ const router = createBrowserRouter(
 			<Route path='orders' element={<OredersStatus />}>
 				<Route path=':orderid' element={<Oreder />} />
 			</Route>
-			<Route path='dashboard' element={<AdminDashboard />} />
-			<Route path='/dashboard/addmenu' element={<AddMenu />} />
-			<Route path='/dashboard/updatemenu' element={<UpdateMenu />} />
-			<Route
-				path='/dashboard/update-menu-item/:id'element={<UpdateMenuItem />}/>
-        <Route path="/dashboard/delete-menu-item/:id" element={<DeleteMenuItem />}/>
-			
+			<Route element={<PrivateRoutes/>}>
+			    <Route path='dashboard' element={<Outlet />}  >
+					<Route index element={<AdminDashboard />} />
+					<Route path='addmenu' element={<AddMenu />} />
+					<Route path='updatemenu' element={<Outlet />} >
+					<Route index element={<UpdateMenu />} />
+						<Route path=':id' element={<UpdateMenuItem />}/>
+                		<Route path=":id" element={<DeleteMenuItem />}/>
+				</Route>
+			</Route>
+	
+		   </Route>
 			<Route path='aboutUs' element={<AboutUs />} />
 			<Route path='myaccount' element={<MyAccount />} />
 		</Route>,

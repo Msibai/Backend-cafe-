@@ -46,6 +46,7 @@ loginRouter.get('/', async (request, response) => {
 loginRouter.delete('/', async (request, response) => {
 	delete request.session.user;
 	response.json({ loggedIn: false });
+	
 
 });
 

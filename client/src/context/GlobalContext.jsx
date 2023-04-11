@@ -9,11 +9,14 @@ export const GlobalProvider = ({ children }) => {
   const isadminFromSession = sessionStorage.getItem("isadmin") || false
   const isworkerFromSession = sessionStorage.getItem("isworker") || false
   const iscustomerFromSession = sessionStorage.getItem("iscustomer") || false
+  const userNameFromSession = sessionStorage.getItem("userName") || ""
 
   const [auth, setAuth] = useState(authFromSession);
   const [isworker, setIsworker] = useState(isworkerFromSession);
   const [ isadmin, setIsadmin] = useState(isadminFromSession);
   const [iscustomer, setIscustomer] = useState(iscustomerFromSession);
+  const [userName, setUserName] = useState(userNameFromSession);
+
    const [user,setUser] = useState("");
    const [menus, setMenus] = useState([]);
 
@@ -28,8 +31,9 @@ export const GlobalProvider = ({ children }) => {
     const result= await response.json();
     if(result){
     setAuth(true);
-    setUser(result.user.name);
-    sessionStorage.setItem("User",result.user.name)
+    setUser(result.user);
+	setUserName(result.user.name);
+    sessionStorage.setItem("userName",result.user.name)
     sessionStorage.setItem("auth",auth)
 
 }
@@ -37,7 +41,6 @@ export const GlobalProvider = ({ children }) => {
     if(result.user.admin){
         setIsadmin(true);
         sessionStorage.setItem("isadmin",isadmin)
-
         navigate('/dashboard')
     }
     else if(result.user.restaurantWorker){
@@ -60,6 +63,7 @@ export const GlobalProvider = ({ children }) => {
     });
     const result = await response.json();
     setAuth(false);
+	sessionStorage.clear();
     
   };
  
@@ -77,8 +81,6 @@ export const GlobalProvider = ({ children }) => {
 
 
 
-  
-
   return (
     <GlobalContext.Provider
       value={{
@@ -89,7 +91,8 @@ export const GlobalProvider = ({ children }) => {
         isworker,
         iscustomer,
         user,
-        menus
+        menus,
+		userName
 
       }}
     >

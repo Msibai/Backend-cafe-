@@ -3,7 +3,16 @@ import GlobalContext from '../context/GlobalContext.jsx';
 import { useContext } from 'react';
 
  function Navbar (props) {
- const { auth, logout , isadmin, iscustomer,isworker, user } = useContext(GlobalContext);
+
+  const {logout} = useContext(GlobalContext);
+
+  const auth = sessionStorage.getItem("auth") || false;
+  const isadmin = sessionStorage.getItem("isadmin") || false
+  const isworker = sessionStorage.getItem("isworker") || false
+  const iscustomer = sessionStorage.getItem("iscustomer") || false
+  const userName = sessionStorage.getItem("userName") || ""
+
+
 
   return (
     <nav>
@@ -50,11 +59,10 @@ import { useContext } from 'react';
                          props.setToggle(!props.toggle);
                        }
                      }}
-            > {user} </NavLink>
+            > {userName} </NavLink>
           </li> 
           </div>
           )}
-
 
           { isworker &&
             (

@@ -31,13 +31,13 @@ function UpdateMenu() {
             <p className="menu-item-price">{menu.pricePerItem} kr</p>
 
             <Link
-              to={`/dashboard/update-menu-item/${menu._id}`}
+              to={`${menu._id}`}
               state={{ data: menu._id }}
             >
               <button className="menu-item-button"> Update</button>
             </Link>
             <Link
-              to={`/dashboard/delete-menu-item/${menu._id}`}
+              to={`${menu._id}`}
               state={{ data: menu._id }}
             >
               <button className="delete-menu-button">Delete</button>
