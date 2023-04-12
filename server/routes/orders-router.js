@@ -46,10 +46,7 @@ orderRouter.post("/", async (req, res) => {
 
 orderRouter.get("/:id", async (request, response) => {
   try {
-    const order = await mongoose.models.orders
-      .findById(request.params.id)
-      .populate("customer", "name")
-      .populate("items");
+    const order = await mongoose.models.orders.findById(request.params.id);
 
     response.json(order);
   } catch (error) {

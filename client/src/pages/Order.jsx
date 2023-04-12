@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../style/handle-orders.css";
 
@@ -11,33 +11,39 @@ function Order() {
   const [err, setErr] = useState("");
   const navigate = useNavigate();
 
-  const params = useParams();
+  const location = useLocation();
 
-  function goBack() {
+  function AcceptOrder() {
     navigate("/orders");
   }
 
   useEffect(() => {
     const fetchItem = async () => {
-      const response = await fetch(`/api/orders/${params.id}`);
+      const response = await fetch(`/api/orders/${location.state.data}`);
       setOrder(await response.json());
-      console.log(order);
-      console.log(response);
     };
 
     fetchItem();
-  }, [params.id]);
+  }, [location.state.data]);
 
   return (
     <div>
-      <div className="row">
-        <div className="cell">Customer Name</div>
-        <div className="cell">Items ordered</div>
+      <div className="handle-orders-table">
+        <div className="row">
+          <div className="cell">Order ID</div>
+          <div className="cell">Customer ID</div>
+
+          <div className="cell">Items ordered</div>
+        </div>
+        <div className="row">
+          <div className="cell">{order?.customer}</div>
+          <div className="cell">{order?._id}</div>
+          <div className="cell">{order?.items.join(" ")}</div>{" "}
+        </div>
       </div>
-      <div className="row">
-        <div className="cell">{order?.name}</div>
-        <div className="cell">{order?.items}</div>
-      </div>
+
+      <button className="order-buttons">Accept order</button>
+      <button className="order-buttons">Deny order</button>
     </div>
   );
 }

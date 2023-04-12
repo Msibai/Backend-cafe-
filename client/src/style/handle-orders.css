@@ -1,3 +1,6 @@
+
+
+
 .handle-orders-table {
     display: flex;
     flex-direction: column;
@@ -27,4 +30,8 @@
   .handle-orders-title{
     text-align:center;
     font-family: 'Playfair Display', serif
+  }
+
+  .order-buttons{
+   font-size:1rem;
   }
