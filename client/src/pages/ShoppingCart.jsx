@@ -4,6 +4,7 @@ import { CartItem } from "../components/CartItem";
 // import { formatCurrency } from "../utilities/formatCurrency.js";
 import { useContext } from "react";
 import GlobalContext from "../context/GlobalContext.jsx";
+import Gradient from "../images/gradient.jpg";
 import { Link, useNavigate } from "react-router-dom";
 
 const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
@@ -45,64 +46,70 @@ export default function ShoppingCart({ isCartOpen }) {
   };
 
   return (
-    <div className="shopping-cart">
-      {cartQuantity > 0 ? (
-        <>
-          <h2>
-            Your Cart [{cartQuantity} Item{cartQuantity > 1 ? "s" : ""}]
-          </h2>
-          <div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cartItems.map((item) => (
-                  <tr key={item.id}>
-                    <CartItem {...item} />
+    <div
+      className="background-image"
+      style={{ backgroundImage: `url(${Gradient})` }}
+    >
+      <div className="shopping-cart">
+        {cartQuantity > 0 ? (
+          <>
+            <h2>
+              Your Cart [{cartQuantity} Item{cartQuantity > 1 ? "s" : ""}]
+            </h2>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
                   </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td id="total" colSpan="3">
-                    Total Amount
-                  </td>
-                  <td>
-                    {formatCurrency(
-                      cartItems.reduce((total, cartItem) => {
-                        const item = menus.find((i) => i._id === cartItem.id);
-                        return (
-                          total + (item?.pricePerItem || 0) * cartItem.quantity
-                        );
-                      }, 0)
-                    )}
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          <div>
-            <button
-              className="checkout-button"
-              onClick={() => {
-                createOrder();
-              }}
-            >
-              Checkout
-            </button>
-          </div>
-        </>
-      ) : (
-        <>
-          <h2>Your Cart is Empty</h2>
-        </>
-      )}
+                </thead>
+                <tbody>
+                  {cartItems.map((item) => (
+                    <tr key={item.id}>
+                      <CartItem {...item} />
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td id="total" colSpan="3">
+                      Total Amount
+                    </td>
+                    <td>
+                      {formatCurrency(
+                        cartItems.reduce((total, cartItem) => {
+                          const item = menus.find((i) => i._id === cartItem.id);
+                          return (
+                            total +
+                            (item?.pricePerItem || 0) * cartItem.quantity
+                          );
+                        }, 0)
+                      )}
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div>
+              <button
+                className="checkout-button"
+                onClick={() => {
+                  createOrder();
+                }}
+              >
+                Checkout
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <h2>Your Cart is Empty</h2>
+          </>
+        )}
+      </div>
     </div>
   );
 }

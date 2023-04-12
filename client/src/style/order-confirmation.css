@@ -1,0 +1,18 @@
+.order-placed {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: slide-right 0.5s forwards;
+  animation-delay: 3s;
+  font-family: 'Playfair Display', serif;
+}
+
+@keyframes slide-right {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(100%, -50%);
+  }
+}
