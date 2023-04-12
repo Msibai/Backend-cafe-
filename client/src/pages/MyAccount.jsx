@@ -45,7 +45,7 @@ function MyAccount() {
   }, []);
 
   if (!profile || !orders) {
-    return <h2>🌀 Loading...</h2>;
+    return <h2>🌀 Loading...Mongoose...Is...So...Slow</h2>;
   } else {
     return (
       <>
@@ -53,9 +53,9 @@ function MyAccount() {
           className="background-image"
           style={{ backgroundImage: `url(${Gradient})` }}
         >
-          <h1>My Account</h1>
+          <h1 className="my-account-title">My Account</h1>
           <div className="profile">
-            <h2>{profile.name}</h2>
+            <h2 className="customer">{profile.name}</h2>
             <div className="group">
               <p>
                 <span>ID: </span>
@@ -118,7 +118,7 @@ function MyAccount() {
           )}
 
           <div className="orders">
-            <h2>My Orders</h2>
+            <h2 className="customer">My Orders</h2>
             {orders.map((order, i) => (
               <div className="group" key={i}>
                 <p>

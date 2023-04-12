@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Gradient from "../images/gradient.jpg";
 import "../style/edit-menu.css";
 
 function DeleteMenuItem() {
@@ -48,31 +49,36 @@ function DeleteMenuItem() {
   };
 
   return (
-    <div className="page">
-      <h1 className="edit-menu-item-title">Delete menu item</h1>
-      {err != "" ? (
-        <div className="error">
-          {" "}
-          <h2 className="update-menu-item-error">{err}</h2>
-        </div>
-      ) : (
-        ""
-      )}
+    <div
+      className="background-image"
+      style={{ backgroundImage: `url(${Gradient})` }}
+    >
+      <div className="page">
+        <h1 className="edit-menu-item-title">Delete menu item</h1>
+        {err != "" ? (
+          <div className="error">
+            {" "}
+            <h2 className="update-menu-item-error">{err}</h2>
+          </div>
+        ) : (
+          ""
+        )}
 
-      <form onSubmit={deleteItem} className="edit-menu-item-container">
-        <div className="form-group">
-          <h2 id="text" className="delete-text">
-            Are you sure you want to delete{" "}
-            <span id="item-id">{menuItem?.itemName}</span>?
-          </h2>
-        </div>
-        <button type="submit" className="submit-edit-button">
-          Delete
+        <form onSubmit={deleteItem} className="edit-menu-item-container">
+          <div className="form-group">
+            <h2 id="text" className="delete-text">
+              Are you sure you want to delete{" "}
+              <span id="item-id">{menuItem?.itemName}</span>?
+            </h2>
+          </div>
+          <button type="submit" className="submit-edit-button">
+            Delete
+          </button>
+        </form>
+        <button className="back-button" onClick={goBack}>
+          Back
         </button>
-      </form>
-      <button className="back-button" onClick={goBack}>
-        Back
-      </button>
+      </div>
     </div>
   );
 }

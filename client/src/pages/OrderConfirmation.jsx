@@ -1,5 +1,6 @@
 import "../style/order-confirmation.css";
 import { useNavigate } from "react-router-dom";
+import Gradient from "../images/gradient.jpg";
 
 function OrderConfirmation() {
   const navigate = useNavigate();
@@ -12,8 +13,13 @@ function OrderConfirmation() {
   setTimeout(goBack, 5000);
 
   return (
-    <div>
-      <h1 className="order-placed">Your order has been placed!</h1>
+    <div
+      className="background-image"
+      style={{ backgroundImage: `url(${Gradient})` }}
+    >
+      <div>
+        <h1 className="order-placed">Your order has been placed!</h1>
+      </div>
     </div>
   );
 }

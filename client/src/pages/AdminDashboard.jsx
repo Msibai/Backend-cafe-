@@ -2,6 +2,7 @@ import "./css/adminDashboard.css";
 import Loading from "../images/loading3.gif";
 import React from "react";
 import { Link } from "react-router-dom";
+import Gradient from "../images/gradient.jpg";
 
 const AdminDashboard = () => {
   return (

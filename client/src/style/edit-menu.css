@@ -131,6 +131,10 @@ width:10rem;
 
    .delete-text{
         font-family: 'Playfair Display', serif;
+        display: block;
+        width: 100%; 
+        text-align: center; 
+        
 
    }
   

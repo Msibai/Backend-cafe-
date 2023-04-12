@@ -3,18 +3,21 @@
 .update-form {
 	margin: 60px auto;
 	max-width: 525px;
-	background-color: burlywood;
+	background-color: rgba(255, 255, 255, 0.5);
 	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
 		0 17px 50px 0 rgba(0, 0, 0, 0.19);
+		
+	
 }
 
 .profile h2,
 .orders h2 {
-	background-color: rgb(136, 77, 0);
+	background-color: black;
 	color: white;
 	font-size: 2rem;
 	margin-bottom: 10px;
 	padding: 1rem;
+	
 }
 
 .group {
@@ -33,15 +36,17 @@
 
 .profile span,
 .orders span {
-	color: rgb(136, 77, 0);
+	color:white;
+	letter-spacing: 1px;
 	font-weight: bold;
 	margin-right: 5px;
+	font-family: 'Edu NSW ACT Foundation', cursive
 }
 
 .profile button,
 .update-form button {
 	display: block;
-	background-color: rgb(136, 77, 0);
+	
 	font-weight: bold;
 	margin: 20px auto;
 }
@@ -50,4 +55,14 @@
 	background-repeat: no-repeat;
     background-position:center;
     background-size:cover;
+}
+
+.my-account-title{
+	text-align:center;
+  font-family: 'Playfair Display', serif;
+}
+
+.customer{
+	
+  font-family: 'Playfair Display', serif;
 }
