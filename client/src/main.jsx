@@ -6,6 +6,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
+  Outlet
 } from "react-router-dom";
 import App from "./App";
 import "./index.css";
@@ -25,6 +26,7 @@ import MyAccount from "./pages/MyAccount";
 import DeleteMenuItem from "./pages/DeleteMenuItem";
 import ShoppingCart from "./pages/ShoppingCart";
 import OrderConfirmation from "./pages/OrderConfirmation";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter(
   createRoutesFromElements([
@@ -38,7 +40,9 @@ const router = createBrowserRouter(
       <Route path="orders" element={<OredersStatus />}>
         <Route path=":orderid" element={<Oreder />} />
       </Route>
-      <Route path="dashboard" element={<AdminDashboard />} />
+      <Route element={<PrivateRoutes/>}>
+      <Route path="dashboard" element={<Outlet />} >
+      <Route index element={<AdminDashboard />} />
       <Route path="/dashboard/addmenu" element={<AddMenu />} />
       <Route path="/dashboard/updatemenu" element={<UpdateMenu />} />
       <Route
@@ -49,6 +53,8 @@ const router = createBrowserRouter(
         path="/dashboard/delete-menu-item/:id"
         element={<DeleteMenuItem />}
       />
+      </Route>
+      </Route>
 
       <Route path="aboutUs" element={<AboutUs />} />
       <Route path="myaccount" element={<MyAccount />} />
