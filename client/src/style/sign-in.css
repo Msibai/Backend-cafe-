@@ -109,3 +109,37 @@ button {
 .create-create-account {
 	margin-top: 1rem;
 }
+
+
+@media (min-width: 360px) and (max-width: 600px) {
+	.background-image {
+		height: 100%;
+	}
+
+	.sign-in-container {
+		height: auto;
+	}
+
+	.create-account-container {
+		height: auto;
+	}
+
+	.create-account-form {
+		height: auto;
+	}
+
+	h1 {
+		font-size: 2rem;
+	}
+
+	.login-form input[type='text'],
+	.login-form input[type='password'] {
+		font-size: 1em;
+	}
+
+	button {
+		font-size: 1em;
+		padding: 0.5em;
+
+	}
+}
