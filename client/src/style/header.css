@@ -1,6 +1,6 @@
 header {
     height: 140px;
-    background-color: var(--black);
+    background-color: rgb(0, 0, 0);
     box-shadow: 2px 2px 6px #232323;
 }
 
@@ -10,6 +10,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 
 .header-container > div:last-child {
@@ -18,6 +19,7 @@ header {
 
 .hamburger-lines {
     display: none;
+    color:white;
 }
 
 .header-logo {
@@ -55,6 +57,7 @@ nav .menu-items {
     animation-name:titleFade;
     animation-duration:2s;
     animation-fill-mode:forwards;
+    font-family: 'Playfair Display', serif;
 }
 
 .menu-items li , .logout {
@@ -71,7 +74,7 @@ nav .menu-items {
 .menu-items a {
     text-decoration: none;
     color: #fff;
-    text-transform: uppercase;
+    
     font-weight: 600;
     letter-spacing: .2em;
     font-size: 22px;
@@ -81,7 +84,7 @@ nav .menu-items {
 .logout {
     text-decoration: none;
     color: #fff;
-    text-transform: uppercase;
+    
     font-weight: 600;
     letter-spacing: .2em;
     font-size: 22px;
@@ -100,6 +103,8 @@ nav .menu-items {
 
 .main-title{
     font-size: 40px;
+    color:white;
+    font-family: 'Playfair Display', serif;
 }
 
 @media screen and (max-width: 960px) {
@@ -132,6 +137,7 @@ nav .menu-items {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        color:white;
     }
 
     .header-container .hamburger-lines .line {
@@ -139,7 +145,7 @@ nav .menu-items {
         height: 4px;
         width: 100%;
         border-radius: 10px;
-        background: black;
+        background: white;
     }
 
     .header-container .hamburger-lines .line1 {
@@ -234,4 +240,9 @@ nav .menu-items {
 
     }
 
+}
+
+.text1,.text2{
+    color:white;
+    font-family: 'Playfair Display', serif;
 }

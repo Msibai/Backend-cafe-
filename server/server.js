@@ -16,7 +16,6 @@ dotenv.config();
 api.use(express.json());
 
 api.use(
-
   session({
     secret: "hello jack",
     resave: false,
@@ -27,7 +26,6 @@ api.use(
       maxAge: 365 * 24 * 60 * 60 * 1000,
     },
   })
-
 );
 
 const conn = `mongodb+srv://mukhtarsibai:hNntlwXGrEf6qUnM@cluster0.n8wdklc.mongodb.net/?retryWrites=true&w=majority`;

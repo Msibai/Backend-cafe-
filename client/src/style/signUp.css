@@ -1,10 +1,12 @@
 .signup-form {
-	margin: 60px auto;
+	margin: auto;
 	max-width: 525px;
-	padding: 30px;
-	background-color: burlywood;
-	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
-		0 17px 50px 0 rgba(0, 0, 0, 0.19);
+	padding: 20px;
+	padding-top:10px;
+	background-color: rgba(255, 255, 255, 0.5);
+	color: #fff;
+	border:2px solid black;
+	border-radius: 10px;
 }
 
 .signup-form .group {
@@ -18,22 +20,24 @@
 }
 
 .signup-form .group input {
-	width: 100%;
-	border: none;
-	padding: 15px 20px;
-	border-radius: 25px;
-	background: rgba(255, 255, 255, 0.4);
+	
+	margin-bottom: -1em;
+	border: 2px solid black;
+	font-size: 1.2em;
+	box-shadow: 1px 1px 1px;
 }
+	
+
 
 .signup-form .group label {
 	color: black;
-	font-size: 12px;
+	font-size: 15
 }
 
 .signup-form button {
 	display: block;
 	margin: auto;
-	background: rgb(136, 77, 0);
+	
 	cursor: pointer;
 }
 
@@ -45,3 +49,12 @@
 .success-message {
 	color: rgb(97, 158, 11);
 }
+
+.sign-up-title{
+	text-align:center;
+  font-family: 'Playfair Display', serif;
+}
+
+.signup-form .sign-up-title {
+	margin-bottom: -20px; 
+  }
