@@ -11,11 +11,21 @@
     width: 80%;
 }
 
+.about-us-intro{
+    line-height: 1.4;
+    margin-top: 0px;
+    font-family: 'Delicious Handrawn', cursive;
+    font-style: italic;
+    color:white;
+    font-size: 1.5rem;
+    letter-spacing:2px;
+}
 .about-us-body {
     width: 80%;
     color: rgb(150, 115, 69);
     padding: 50px;
-    margin-top: 50px;
+    margin-top: 40px;
+    margin-bottom:40px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -67,6 +77,11 @@
         font-weight: bold;
         color: rgb(150, 115, 69);
         margin-bottom: 10px;
+        
     }
 
+}
+
+.about-us-body-h2{
+    font-family: 'Edu NSW ACT Foundation', cursive;
 }
