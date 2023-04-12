@@ -1,22 +1,26 @@
 import { Outlet } from 'react-router-dom';
 import Header from './pages/Header';
-import {GlobalProvider} from "../src/context/GlobalContext.jsx";
-import Footer from './pages/Footer';
 
+import { GlobalProvider } from '../src/context/GlobalContext.jsx';
+import { ShoppingCartProvider } from './context/ShoppingCartContext';
+import Footer from './pages/Footer';
 
 function App() {
 	console.log(sessionStorage);
 	return (
-		<GlobalProvider>
-		<div className='App'>
-			
-		<Header/>
-			<Outlet />
-		<Footer />	
-		</div>
-		</GlobalProvider>
-	);
+		
 
+		
+		<GlobalProvider>
+		<ShoppingCartProvider>
+				<Header />
+				<Outlet />
+				<Footer />	
+			</ShoppingCartProvider>
+
+		</GlobalProvider>
+			
+	);
 }
 
 export default App;
