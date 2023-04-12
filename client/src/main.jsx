@@ -13,8 +13,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import MenuItem from "./pages/MenuItem";
-import Order from "./pages/Order";
-import OrderStatus from "./pages/OrdersStatus";
+import Oreder from "./pages/Order";
+import OredersStatus from "./pages/OrdersStatus";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import AddMenu from "./pages/addMenu";
@@ -23,6 +23,8 @@ import UpdateMenuItem from "./pages/UpdateMenuItem";
 import AboutUs from "./pages/AboutUs";
 import MyAccount from "./pages/MyAccount";
 import DeleteMenuItem from "./pages/DeleteMenuItem";
+import ShoppingCart from "./pages/ShoppingCart";
+import OrderConfirmation from "./pages/OrderConfirmation";
 
 const router = createBrowserRouter(
   createRoutesFromElements([
@@ -33,8 +35,8 @@ const router = createBrowserRouter(
       </Route>
       <Route path="signup" element={<SignUp />} />
       <Route path="signin" element={<SignIn />} />
-      <Route path="orders" element={<OrderStatus />}>
-        <Route path=":orderid" element={<Order />} />
+      <Route path="orders" element={<OredersStatus />}>
+        <Route path=":orderid" element={<Oreder />} />
       </Route>
       <Route path="dashboard" element={<AdminDashboard />} />
       <Route path="/dashboard/addmenu" element={<AddMenu />} />
@@ -50,6 +52,8 @@ const router = createBrowserRouter(
 
       <Route path="aboutUs" element={<AboutUs />} />
       <Route path="myaccount" element={<MyAccount />} />
+      <Route path="cart" element={<ShoppingCart />} />
+      <Route path="order-confirmation" element={<OrderConfirmation />} />
     </Route>,
   ])
 );

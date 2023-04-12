@@ -36,43 +36,6 @@ header {
     color:white;
 }
 
-header .cart-button button {
-    position: relative;
-    color: white;
-}
-
-header .cart-button button:hover{
-    color: var(--yellow);
-    cursor:pointer;
-    transition: all 0.3s;
-}
-
-header .cart-button button svg {
-    height: 2rem;
-    width: 2rem;
-}
-
-header .cart-button button svg:hover{
-    background-color: rgba(10, 10, 10, 0.57);
-    color: white;
-    transition: background-color 0.3s;
-    cursor: pointer;
-}
-
-
-
-header .cart-button button div {
-    background-color: var(--red);
-    position: absolute;
-    height: 1.5rem;
-    width: 1.5rem;
-    text-align: center;
-    border-radius: 50%;
-    line-height: 1.5rem;
-    top: 0;
-    right: 0;
-    transform: translate(50%, 50%);
-}
 
 
 @keyframes titleFade{
@@ -94,13 +57,15 @@ nav .menu-items {
     animation-fill-mode:forwards;
 }
 
-.menu-items li {
+.menu-items li , .logout {
     margin: 0 40px 0 0;
     transition: all 0.4s ease;
 }
 
-.menu-items li:hover {
+.menu-items li:hover , .logout:hover {
     opacity: .7;
+    cursor: pointer;
+
 }
 
 .menu-items a {
@@ -109,8 +74,19 @@ nav .menu-items {
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: .2em;
-    font-size: 16px;
+    font-size: 22px;
     padding: 10px 0;
+}
+
+.logout {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .2em;
+    font-size: 22px;
+    
+
 }
 
 .menu-items a.active {
@@ -120,6 +96,10 @@ nav .menu-items {
 
 .small-screen-app-title{
     display: none;
+}
+
+.main-title{
+    font-size: 40px;
 }
 
 @media screen and (max-width: 960px) {
@@ -180,7 +160,7 @@ nav .menu-items {
         transform: translate(-150%);
     }
 
-    nav .menu-items li {
+    nav .menu-items li , .logout {
         margin: 0 0 1.2rem 0;
         font-size: 1.5rem;
         font-weight: 500;
@@ -192,7 +172,7 @@ nav .menu-items {
         padding: 0.7rem;
     }
 
-    .menu-items.show {
+    .menu-items.show , .logout {
         transform: translateX(0);
         padding: 50px 0 0 0;
         position: absolute;
@@ -236,24 +216,11 @@ nav .menu-items {
         display: none;
 
     }
+    
 
 
 }
 
-
-/* 
-.navigationBar {
-    display: flex;
-    background-color: #232323;
-    width: 100%;
-    height: 12rem;
-    font-family: "Bernard MT Condensed", sans-serif;
-    flex-direction: row;
-    align-items: center;
-    border: 1px solid black;
-    justify-content: space-around;
-    box-shadow: -2px -2px 6px rgba(255, 255, 255, .6), 2px 2px 6px #232323;
-} */
 
 @media (max-width: 315px) {
    
@@ -268,7 +235,3 @@ nav .menu-items {
     }
 
 }
-/* @media screen and (max-width: 768px) {
-    .app-title, h1 {
-        display: none;
-    } */

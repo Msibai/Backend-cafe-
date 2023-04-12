@@ -11,14 +11,13 @@ const orderSchema = new Schema({
     },
   ],
 
+  restaurant: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "restaurants",
+  },
   customer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
-  },
-
-  orderNumber: {
-    type: String,
-    required: true,
   },
 });
 
@@ -33,8 +32,8 @@ orderRouter.post("/", async (req, res) => {
   try {
     const order = new mongoose.models.orders(req.body);
     order.items = req.body.items;
+    order.restaurant = req.body.restaurant;
     order.customer = req.body.customer;
-    order.orderNumber = req.body.orderNumber;
     await order.save();
     res.status(201);
     res.json({ result: "created" });
@@ -44,14 +43,15 @@ orderRouter.post("/", async (req, res) => {
   }
 });
 
-orderRouter.get("/:id", async (request, response) => {
-  try {
-    const order = await mongoose.models.orders.findById(request.params.id);
+orderRouter.get("/:id", async (req, res) => {
+  const orders = await mongoose.models.orders
+    .find({
+      customer: req.params.id,
+    })
+    .populate("customer")
+    .populate("items");
 
-    response.json(order);
-  } catch (error) {
-    response.status(404).json({ error: "Order not found" });
-  }
+  res.json(orders);
 });
 
 export default orderRouter;
