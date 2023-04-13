@@ -19,6 +19,7 @@ const orderSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
+  status: { type: String, default: "In-Process" }
 });
 
 mongoose.model("orders", orderSchema);
@@ -44,14 +45,23 @@ orderRouter.post("/", async (req, res) => {
 });
 
 orderRouter.get("/:id", async (req, res) => {
-  const orders = await mongoose.models.orders
-    .find({
-      customer: req.params.id,
-    })
+  const order = await mongoose.models.orders
+    .findById(req.params.id)
     .populate("customer")
     .populate("items");
 
-  res.json(orders);
+  res.json(order);
 });
+
+orderRouter.delete("/:id", async (request, response) => {
+	if (request.session.user && request.session.user.restaurantWorker) {
+	  await mongoose.models.orders.findByIdAndDelete(request.params.id);
+	  response.json({ message: "Successfully deleted!" });
+	} else {
+	  response.status(403);
+	  response.json({ error: "You must be a worker to delete an order" });
+	}
+  });
+  
 
 export default orderRouter;
