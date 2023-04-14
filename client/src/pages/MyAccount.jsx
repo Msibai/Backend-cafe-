@@ -144,6 +144,10 @@ function MyAccount() {
 								 "Order is Ready to be picked"				
 								}
 							</p>
+							<p>
+								<span>Order Pickup Time: </span>
+								{ order.pickUpTime}
+							</p>
 						</div>
 					))}
 				</div>

@@ -7,6 +7,7 @@ function Order() {
   const [items, setItems] = useState();
   const [customer, setCustomer] = useState();
   const [orderNumber, setOrderNumber] = useState();
+  const [time, setTime] = useState();
 
   const [err, setErr] = useState("");
   const navigate = useNavigate();
@@ -48,6 +49,10 @@ function Order() {
       console.log(result);
     }
   };
+  const handleTime = (event)=> {
+	setTime(event.target.value);
+  };
+
 console.log(order)
 
   if (!order) {
@@ -58,23 +63,41 @@ console.log(order)
       <div className="handle-orders-table">
         <div className="row">
           <div className="cell">Order ID</div>
-          <div className="cell">Customer ID</div>
+          <div className="cell">Customer Name</div>
 
           <div className="cell">Items ordered</div>
+		  <div className="cell">Order Status</div>
         </div>
         <div className="row">
-          { <div className="cell">{order?.customer.name}, { order?.customer._id}</div> }
-          <div className="cell">{order?._id}</div>
-          {/* <div className="cell">{order?.items}</div>{" "} */}
+          { <div className="cell"> { order?._id}</div> }
+		  {<div className="cell"> {order?.customer.name} </div>}
+		  <div> 
+
+         {order?.items.map(item=> (
+			<div key={item.itemName} >
+            <div className="order-items" >{item.itemName}</div></div>
+		  ))} </div>
+          {<div className="cell"> {  (order.status.Pending) &&
+								 "Order Pending"}
+								 {(order.status.Accepted) &&
+								 "Order Accepted"	}
+								 {(order.status.Declined) &&
+								 "Order Declined"				
+								}
+								{(order.status.Ready) &&
+								 "Order Ready "				
+								} </div>}
         </div>
       </div>
-
       <button className="order-buttons" onClick={()=> { changeStatus({status:{Pending:false, Accepted:true}})}}>Accept order</button>
       <button className="order-buttons" onClick={()=> { changeStatus({status:{Pending:false, Declined:true}})}}>Deny order </button>
 	  <button className="order-buttons" onClick={()=> { changeStatus({status:{Pending:false, Ready:true}})}}>Order is Ready </button>
 	  <div>
-		<label for = "pickupTime"> Pickup Time </label> <input id= "pickupTime" onChange={(e)=> {changeStatus({pickUpTime: e.target.value})}}></input>
+		<label for = "pickupTime" className="pickup-time-label"> Pickup Time </label> <input id= "pickupTime"  onChange= {handleTime}></input>
+		<button className="order-buttons" onClick= {(e)=> {changeStatus({pickUpTime: time})}}> Add Time </button>
+	  
 	  </div>
+
     </div>
   );
 }

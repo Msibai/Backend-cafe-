@@ -7,7 +7,6 @@ import GlobalContext from "../context/GlobalContext.jsx";
 
 const SignIn = () => {
   const { submitLogin } = useContext(GlobalContext);
-
   const emailRef = useRef();
   const passwordRef = useRef();
 

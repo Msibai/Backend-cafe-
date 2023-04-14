@@ -29,7 +29,7 @@ export const GlobalProvider = ({ children }) => {
 				body: JSON.stringify({ email, password }),
 			});
 			const result = await response.json();
-			if (result) {
+			if (result.user) {
 				setAuth(true);
 				setUser(result.user.name);
 				setUserId(result.user._id);
@@ -47,7 +47,7 @@ export const GlobalProvider = ({ children }) => {
 				navigate('/myaccount');
 			}
 		} catch (error) {
-			console.log(error); // check if there are any errors
+			navigate("/");
 		}
 	};
 
@@ -78,6 +78,7 @@ export const GlobalProvider = ({ children }) => {
 		setUserId('');
 		setUser('');
 		sessionStorage.clear();
+		navigate('/');
 	};
 
 	const fetchMenuItems = async () => {
