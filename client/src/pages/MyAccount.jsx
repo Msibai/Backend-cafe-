@@ -24,7 +24,7 @@ function MyAccount() {
 	};
 
 	const fetchUserOrder = async () => {
-		const response = await fetch(`/api/orders/${userId}`);
+		const response = await fetch(`/api/myorders/${userId}`);
 		const data = await response.json();
 		setOrders(data);
 	};
@@ -43,7 +43,7 @@ function MyAccount() {
 	useEffect(() => {
 		if (userId) {
 			fetchUserInfo();
-			fetchUserOrder();
+		    fetchUserOrder();
 		}
 	}, [userId]);
 
@@ -125,11 +125,28 @@ function MyAccount() {
 						<div className='group' key={i}>
 							<p>
 								<span>Order No.: </span>
-								{order.orderNumber}
+								{order._id}
 							</p>
 							<p>
 								<span>Items: </span>
 								{order.items.map((item, i) => (i ? ' & ' : '') + item.itemName)}
+							</p>
+							<p>
+								<span>Order status: </span>
+								{  (order.status.Pending) &&
+								 "Order Pending"}
+								 {(order.status.Accepted) &&
+								 "Order Accepted"	}
+								 {(order.status.Declined) &&
+								 "Order Declined"				
+								}
+								{(order.status.Ready) &&
+								 "Order is Ready to be picked"				
+								}
+							</p>
+							<p>
+								<span>Order Pickup Time: </span>
+								{ order.pickUpTime}
 							</p>
 						</div>
 					))}

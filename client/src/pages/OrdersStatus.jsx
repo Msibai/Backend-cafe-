@@ -17,13 +17,12 @@ function OredersStatus() {
 
   return (
     <div>
-      <Outlet />
       <h1 className="handle-orders-title">Handle Orders</h1>
       <div className="handle-orders-table">
         <div className="row">
           <div className="cell">Order Id</div>
         </div>
-        {orders.map((order) => (
+        {orders.map(order => (
           <div key={order._id} className="row">
             <div className="cell">{order._id}</div>
 
@@ -33,6 +32,7 @@ function OredersStatus() {
           </div>
         ))}
       </div>
+
     </div>
   );
 }
