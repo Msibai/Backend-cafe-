@@ -23,11 +23,11 @@ function MyAccount() {
 		});
 	};
 
-	// const fetchUserOrder = async () => {
-	// 	const response = await fetch(`/api/orders/${userId}`);
-	// 	const data = await response.json();
-	// 	setOrders(data);
-	// };
+	const fetchUserOrder = async () => {
+		const response = await fetch(`/api/myorders/${userId}`);
+		const data = await response.json();
+		setOrders(data);
+	};
 
 	const submitUpdate = async (event) => {
 		event.preventDefault();
@@ -43,7 +43,7 @@ function MyAccount() {
 	useEffect(() => {
 		if (userId) {
 			fetchUserInfo();
-			// fetchUserOrder();
+		    fetchUserOrder();
 		}
 	}, [userId]);
 
@@ -119,21 +119,34 @@ function MyAccount() {
 					</form>
 				)}
 
-				{/* <div className='orders'>
+				<div className='orders'>
 					<h2 className='customer'>My Orders</h2>
 					{orders.map((order, i) => (
 						<div className='group' key={i}>
 							<p>
 								<span>Order No.: </span>
-								{order.orderNumber}
+								{order._id}
 							</p>
 							<p>
 								<span>Items: </span>
 								{order.items.map((item, i) => (i ? ' & ' : '') + item.itemName)}
 							</p>
+							<p>
+								<span>Order status: </span>
+								{  (order.status.Pending) &&
+								 "Order Pending"}
+								 {(order.status.Accepted) &&
+								 "Order Accepted"	}
+								 {(order.status.Declined) &&
+								 "Order Declined"				
+								}
+								{(order.status.Ready) &&
+								 "Order is Ready to be picked"				
+								}
+							</p>
 						</div>
 					))}
-				</div> */}
+				</div>
 			</div>
 		</>
 	);

@@ -19,10 +19,17 @@ const orderSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
-  status: { type: String, default: "In-Process" }
+  status: { Pending:{default: true , type: Boolean} , 
+  Accepted:{default: false , type: Boolean},
+  Declined:{default: false , type: Boolean},
+  Ready: {default:false, type: Boolean}},
+
+  pickUpTime: { type: String 
+
+  }
 });
 
-mongoose.model("orders", orderSchema);
+export const myOrders = mongoose.model("orders", orderSchema);
 
 orderRouter.get("/", async (req, res) => {
   const orders = await mongoose.models.orders.find();
@@ -60,6 +67,18 @@ orderRouter.delete("/:id", async (request, response) => {
 	} else {
 	  response.status(403);
 	  response.json({ error: "You must be a worker to delete an order" });
+	}
+  });
+  
+  orderRouter.put("/:id", async (request, response) => {
+	if (request.session.user && request.session.user.restaurantWorker) {
+	  const order = await mongoose.models.orders.findByIdAndUpdate(
+		request.params.id,
+		request.body
+	  );
+	  await order.save();
+  
+	  response.json({ Order: "Handled" });
 	}
   });
   

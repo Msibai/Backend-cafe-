@@ -8,6 +8,7 @@ import session from "express-session";
 import restaurantRouter from "./routes/restaurant-router.js";
 import errorController from "./controller/errorController.js";
 import orderRouter from "./routes/orders-router.js";
+import myOrderRouter from "./routes/myOrders-router.js";
 
 const api = express();
 const port = 3030;
@@ -41,6 +42,7 @@ router.use("/api/login", loginRouter);
 router.use("/api/users", usersRouter);
 router.use("/api/menus", menusRouter);
 router.use("/api/orders", orderRouter);
+router.use("/api/myorders", myOrderRouter);
 
 api.use(router);
 api.use(errorController);
